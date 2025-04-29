@@ -5,6 +5,8 @@ const nextConfig = {
   experimental: {
     turbo: true,
   },
+  // App Routerを使用するための設定
+  appDir: true,
 };
 
 module.exports = nextConfig;
