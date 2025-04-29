@@ -134,3 +134,18 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# pnpm cache directory
+.pnpm-store/
+
+# macOS specific files
+.DS_Store
+
+# Vitest cache and coverage
+.vitest/
+coverage/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
