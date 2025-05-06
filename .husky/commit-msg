@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Husky v9+向けの最新フォーマット
+
+# コミットメッセージをcommitlintで検証する
+npx --no -- commitlint --edit $1

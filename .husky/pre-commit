@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Husky v9+向けの最新フォーマット
+
+# コミット前にlint-stagedを実行
+npx lint-staged

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Husky v9+向けの最新フォーマット
+
+# プッシュ前にテストを実行
+npm test

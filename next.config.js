@@ -2,11 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  experimental: {
-    turbo: true,
-  },
-  // App Routerを使用するための設定
-  appDir: true,
+  // experimental.turboは非推奨になっているため削除
+  // Next.js 15以降ではappDirはデフォルトでtrueのため明示的に設定する必要なし
 };
 
-module.exports = nextConfig;
+export default nextConfig;

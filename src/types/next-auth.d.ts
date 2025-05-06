@@ -6,7 +6,13 @@ declare module 'next-auth' {
     accessToken?: string;
     refreshToken?: string;
     expiresAt?: number;
-    user?: User;
+    error?: string;
+    user?: User & {
+      spotifyId?: string;
+      spotifyUrl?: string;
+      country?: string;
+      product?: 'premium' | 'free' | 'open';
+    };
   }
 
   interface User {
@@ -22,5 +28,12 @@ declare module 'next-auth/jwt' {
     accessToken?: string;
     refreshToken?: string;
     expiresAt?: number;
+    error?: 'RefreshAccessTokenError' | string;
+    user?: {
+      spotifyId?: string;
+      spotifyUrl?: string;
+      country?: string;
+      product?: 'premium' | 'free' | 'open';
+    };
   }
 }
