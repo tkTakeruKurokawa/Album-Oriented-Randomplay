@@ -63,5 +63,8 @@
     "next-auth": "^4.24.11",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-darwin-x64": "^4.40.0"
   }
 }
