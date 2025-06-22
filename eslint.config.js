@@ -1,7 +1,6 @@
 import globals from 'globals'; // グローバル変数の定義に便利
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint'; // typescript-eslint の推奨インポート方法
-import nextPlugin from 'eslint-config-next';
 import prettierConfig from 'eslint-config-prettier'; // Prettier連携 (フォーマットルール無効化)
 import importPlugin from 'eslint-plugin-import';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
@@ -9,6 +8,7 @@ import reactPlugin from 'eslint-plugin-react'; // React本体のルール
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import vitestPlugin from 'eslint-plugin-vitest';
 import unicornPlugin from 'eslint-plugin-unicorn'; // 汎用的なコード改善ルール
+import nextPlugin from '@next/eslint-plugin-next';
 
 import { resolve } from 'node:path'; // 'node:' prefix を推奨
 import { fileURLToPath } from 'node:url'; // 'node:' prefix を推奨
@@ -211,10 +211,16 @@ export default tseslint.config(
   },
 
   // 5. Next.js 固有の設定 (eslint-config-next)
-  // nextPlugin が設定オブジェクトの配列を返す場合に対応するためスプレッド構文を使用
-  ...(Array.isArray(nextPlugin) ? nextPlugin : [nextPlugin]),
-  // もし `eslint-config-next` が Flat Config 用の named export を提供している場合:
-  // (例: import { coreWebVitals } from "eslint-config-next/configs"; ...coreWebVitals,)
+  {
+    name: 'next/core-web-vitals',
+    plugins: {
+      '@next/next': nextPlugin,
+    },
+    rules: {
+      ...nextPlugin.configs.recommended.rules,
+      ...nextPlugin.configs['core-web-vitals'].rules,
+    },
+  },
 
   // 6. Vitest (テスト) 関連の設定
   {
