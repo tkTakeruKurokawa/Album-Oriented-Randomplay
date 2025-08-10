@@ -1,0 +1,47 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "order/properties-alphabetical-order": true,
+    "selector-class-pattern": null,
+    "no-descending-specificity": null,
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["tailwind", "apply", "variants", "responsive", "screen", "layer"]
+      }
+    ],
+    "function-no-unknown": [
+      true,
+      {
+        "ignoreFunctions": ["theme", "screen"]
+      }
+    ],
+    "color-named": [
+      "never",
+      {
+        "ignore": ["inside-function"]
+      }
+    ],
+    "declaration-block-single-line-max-declarations": 1,
+    "max-nesting-depth": 3,
+    "selector-max-compound-selectors": 4,
+    "selector-max-id": 0
+  },
+  "overrides": [
+    {
+      "files": ["**/*.module.css"],
+      "rules": {
+        "selector-class-pattern": "^[a-z][a-zA-Z0-9]+$"
+      }
+    }
+  ],
+  "ignoreFiles": [
+    "node_modules/**/*",
+    ".next/**/*",
+    "out/**/*",
+    "dist/**/*",
+    "coverage/**/*",
+    "storybook-static/**/*"
+  ]
+}
