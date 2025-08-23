@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Next.js
+.next/
+out/
+
+# Build outputs
+build/
+dist/
+storybook-static/
+
+# Coverage reports
+coverage/
+
+# IDE/Editor files
+.vscode/
+.idea/
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Logs
+*.log
+
+# Environment files
+.env*
+
+# Git
+.git/
+
+# OS generated files
+.DS_Store
+Thumbs.db
