@@ -1,11 +1,13 @@
-import React from 'react';
-import styles from '@/styles/AlbumCard.module.css';
+import Image from 'next/image'
+import React from 'react'
+
+import styles from '@/styles/AlbumCard.module.css'
 
 interface AlbumCardProps {
-  title: string;
-  artist: string;
-  coverUrl?: string;
-  year?: number;
+  title: string
+  artist: string
+  coverUrl?: string
+  year?: number
 }
 
 const AlbumCard: React.FC<AlbumCardProps> = ({ title, artist, coverUrl, year }) => {
@@ -13,7 +15,7 @@ const AlbumCard: React.FC<AlbumCardProps> = ({ title, artist, coverUrl, year }) 
     <div className={styles.card}>
       {coverUrl && (
         <div className={styles.coverImage}>
-          <img src={coverUrl} alt={`${title} by ${artist}`} />
+          <Image src={coverUrl} alt={`${title} by ${artist}`} width={200} height={200} />
         </div>
       )}
       <div className={styles.info}>
@@ -22,7 +24,7 @@ const AlbumCard: React.FC<AlbumCardProps> = ({ title, artist, coverUrl, year }) 
         {year && <p className={styles.year}>{year}</p>}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AlbumCard;
+export default AlbumCard

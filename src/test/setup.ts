@@ -1,16 +1,21 @@
-import '@testing-library/jest-dom';
-import { expect, afterEach, beforeAll, afterAll } from 'vitest';
-import { cleanup } from '@testing-library/react';
-import * as matchers from '@testing-library/jest-dom/matchers';
-import { server } from '../mocks/server';
+import '@testing-library/jest-dom'
+import * as matchers from '@testing-library/jest-dom/matchers'
+import { cleanup } from '@testing-library/react'
+import { expect, afterEach, beforeAll, afterAll } from 'vitest'
+
+import { server } from '../mocks/server'
 
 // Extend Vitest's expect with jest-dom matchers
-expect.extend(matchers);
+expect.extend(matchers)
 
 // MSWのサーバーを開始・終了
-beforeAll(() => server.listen({ onUnhandledRequest: 'error' }));
+beforeAll(() => {
+  server.listen({ onUnhandledRequest: 'error' })
+})
 afterEach(() => {
-  cleanup();
-  server.resetHandlers(); // リクエストハンドラーをリセット
-});
-afterAll(() => server.close());
+  cleanup()
+  server.resetHandlers() // リクエストハンドラーをリセット
+})
+afterAll(() => {
+  server.close()
+})

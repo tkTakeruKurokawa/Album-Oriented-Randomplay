@@ -100,6 +100,15 @@ export default tseslint.config(
       ...unicornPlugin.configs.recommended.rules,
       'unicorn/prevent-abbreviations': 'off', // プロジェクトに合わせて調整
       'unicorn/no-null': 'off', // Reactではnullを返すことが多いためオフ
+      'unicorn/filename-case': [
+        'error',
+        {
+          cases: {
+            pascalCase: true, // PascalCaseを許可
+            kebabCase: true,  // kebab-caseも許可（設定ファイル等のため）
+          },
+        },
+      ],
     },
   },
 

@@ -1,5 +1,6 @@
-import Link from 'next/link';
-import styles from '@/styles/Home.module.css';
+import Link from 'next/link'
+
+import styles from '@/styles/Home.module.css'
 
 export default function Home() {
   return (
@@ -10,12 +11,10 @@ export default function Home() {
           へようこそ
         </h1>
 
-        <p className={styles.description}>
-          アルバム単位でランダム再生が可能なSpotifyアプリです。
-        </p>
+        <p className={styles.description}>アルバム単位でランダム再生が可能なSpotifyアプリです。</p>
 
         <div className={styles.linkContainer}>
-          <Link href="/auth/signin" className={styles.loginButton}>
+          <Link href='/auth/signin' className={styles.loginButton}>
             Spotifyでログイン
           </Link>
         </div>
@@ -25,5 +24,5 @@ export default function Home() {
         <p>Powered by Spotify API</p>
       </footer>
     </div>
-  );
+  )
 }

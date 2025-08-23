@@ -7,7 +7,6 @@
     "moduleResolution": "bundler",
     "jsx": "preserve",
     "incremental": true,
-
     /* 型チェックの厳格化設定 */
     "strict": true,
     "noImplicitAny": true,
@@ -15,18 +14,15 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noUncheckedIndexedAccess": true,
-
     /* モジュール関連 */
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-
     /* パスエイリアス設定 */
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]
     },
-
     /* Next.js 向け設定 */
     "plugins": [
       {
@@ -35,7 +31,8 @@
     ],
     "noEmit": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "allowJs": true
   },
   "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts"],
   "exclude": ["node_modules", ".storybook", "coverage"]
