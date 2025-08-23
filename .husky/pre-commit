@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 # Husky v9+向けの最新フォーマット
 
-# コミット前にlint-stagedを実行
+echo "🔍 Running pre-commit checks..."
+
+# TypeScript型チェック
+echo "📝 TypeScript type checking..."
+npx tsc --noEmit
+
+# lint-stagedを実行（ESLint、Stylelint、Prettier）
+echo "🧹 Running linters and formatters..."
 npx lint-staged
+
+echo "✅ Pre-commit checks completed successfully!"

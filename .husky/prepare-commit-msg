@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# Husky v9+向けの最新フォーマット
+
+# prepare-commit-msgフック
+# コミットメッセージにブランチ名を自動追加（オプション）
+
+COMMIT_EDITMSG=$1
+COMMIT_SOURCE=$2
+
+# マージコミットの場合は何もしない
+if [ "$COMMIT_SOURCE" = "merge" ]; then
+  exit 0
+fi
+
+# ブランチ名を取得
+BRANCH_NAME=$(git symbolic-ref --short HEAD 2>/dev/null)
+
+# ブランチ名がfeature/やfix/で始まる場合、コミットメッセージにプレフィックスを追加
+if [[ $BRANCH_NAME =~ ^(feature|feat)/.+ ]]; then
+  PREFIX="feat: "
+elif [[ $BRANCH_NAME =~ ^(fix|bugfix)/.+ ]]; then
+  PREFIX="fix: "
+elif [[ $BRANCH_NAME =~ ^(docs)/.+ ]]; then
+  PREFIX="docs: "
+elif [[ $BRANCH_NAME =~ ^(style)/.+ ]]; then
+  PREFIX="style: "
+elif [[ $BRANCH_NAME =~ ^(refactor)/.+ ]]; then
+  PREFIX="refactor: "
+elif [[ $BRANCH_NAME =~ ^(test)/.+ ]]; then
+  PREFIX="test: "
+elif [[ $BRANCH_NAME =~ ^(chore)/.+ ]]; then
+  PREFIX="chore: "
+fi
+
+# プレフィックスがある場合、コミットメッセージの先頭に追加
+if [ -n "$PREFIX" ]; then
+  # 既存のコミットメッセージを読み取り
+  CURRENT_MSG=$(cat "$COMMIT_EDITMSG")
+  
+  # プレフィックスが既に存在しない場合のみ追加
+  if [[ ! $CURRENT_MSG =~ ^(feat|fix|docs|style|refactor|test|chore|ci|build|perf): ]]; then
+    echo "${PREFIX}${CURRENT_MSG}" > "$COMMIT_EDITMSG"
+  fi
+fi

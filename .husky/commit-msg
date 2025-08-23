@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 # Husky v9+向けの最新フォーマット
 
+echo "📝 Validating commit message..."
+
 # コミットメッセージをcommitlintで検証する
 npx --no -- commitlint --edit $1
+
+echo "✅ Commit message validation passed!"
