@@ -39,9 +39,10 @@ describe('AlbumCard', () => {
     expect(screen.getByText(props.artist)).toBeInTheDocument()
     expect(screen.getByText('2025')).toBeInTheDocument()
 
-    // 画像が正しく表示されていることを確認
+    // 画像が正しく表示されていることを確認（Next.js Imageの最適化を考慮）
     const image = screen.getByAltText(`${props.title} by ${props.artist}`)
     expect(image).toBeInTheDocument()
-    expect(image).toHaveAttribute('src', props.coverUrl)
+    // Next.js Imageが最適化されるため、元のURLが含まれているかチェック
+    expect(image.getAttribute('src')).toContain(encodeURIComponent(props.coverUrl))
   })
 })
