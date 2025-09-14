@@ -26,11 +26,28 @@ export default tseslint.config(
   // 1. 基本設定 (ESLint推奨)
   eslint.configs.recommended,
 
-  // 2. TypeScript設定 (typescript-eslint推奨)
-  ...tseslint.configs.strictTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
+  // 2. JavaScript/設定ファイル用の設定
+  {
+    files: ['**/*.{js,jsx,mjs,cjs}'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
+  },
 
-  // 3. React/Next.js/Hooks/a11y関連の設定
+  // 3. TypeScript設定 (typescript-eslint推奨)
+  ...tseslint.configs.strictTypeChecked.map(config => ({
+    ...config,
+    files: ['**/*.{ts,tsx}'], // TypeScriptファイルのみに適用
+  })),
+  ...tseslint.configs.stylisticTypeChecked.map(config => ({
+    ...config,
+    files: ['**/*.{ts,tsx}'], // TypeScriptファイルのみに適用
+  })),
+
+  // 4. React/Next.js/Hooks/a11y関連の設定
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     plugins: {
@@ -73,7 +90,7 @@ export default tseslint.config(
     },
   },
 
-  // 4. importプラグインの設定
+  // 5. importプラグインの設定
   {
     plugins: {
       import: importPlugin,
@@ -91,7 +108,7 @@ export default tseslint.config(
     },
   },
 
-  // 5. Unicornプラグインの設定
+  // 6. Unicornプラグインの設定
   {
     plugins: {
       unicorn: unicornPlugin,
@@ -112,7 +129,7 @@ export default tseslint.config(
     },
   },
 
-  // 6. Vitest用の設定
+  // 7. Vitest用の設定
   {
     files: ['**/*.test.{js,jsx,ts,tsx}'],
     plugins: {
@@ -128,7 +145,7 @@ export default tseslint.config(
     },
   },
 
-  // 7. TypeScript用の設定
+  // 8. TypeScript用の設定
   {
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
@@ -139,17 +156,6 @@ export default tseslint.config(
     },
   },
 
-  // 8. JavaScript/設定ファイル用の設定
-  {
-    files: ['**/*.{js,jsx,mjs,cjs}'],
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-      },
-    },
-  },
-
-  // 8. Prettierとの競合を避けるための設定 (必ず最後に配置)
+  // 9. Prettierとの競合を避けるための設定 (必ず最後に配置)
   prettierConfig,
 );

@@ -2,6 +2,8 @@ import AlbumCard from './AlbumCard'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { generateAlbumArtPlaceholder, generatePlaceholderWithPreset } from '@/lib/placeholder'
+
 const meta = {
   title: 'Components/AlbumCard',
   component: AlbumCard,
@@ -43,7 +45,7 @@ export const Default: Story = {
   args: {
     title: 'Abbey Road',
     artist: 'The Beatles',
-    coverUrl: 'https://via.placeholder.com/200x200/1f2937/ffffff?text=Album+Cover',
+    coverUrl: generateAlbumArtPlaceholder('Abbey Road', 'The Beatles'),
     year: 1969,
   },
 }
@@ -62,7 +64,7 @@ export const WithoutYear: Story = {
   args: {
     title: 'Random Access Memories',
     artist: 'Daft Punk',
-    coverUrl: 'https://via.placeholder.com/200x200/dc2626/ffffff?text=RAM',
+    coverUrl: generatePlaceholderWithPreset('RAM', 'red'),
   },
 }
 
@@ -71,7 +73,7 @@ export const LongTitle: Story = {
   args: {
     title: 'The Dark Side of the Moon: 50th Anniversary Edition Deluxe Box Set',
     artist: 'Pink Floyd',
-    coverUrl: 'https://via.placeholder.com/200x200/7c3aed/ffffff?text=Pink+Floyd',
+    coverUrl: generatePlaceholderWithPreset('Pink Floyd', 'purple'),
     year: 1973,
   },
 }
@@ -81,7 +83,7 @@ export const ShortTitle: Story = {
   args: {
     title: 'IV',
     artist: 'Led Zeppelin',
-    coverUrl: 'https://via.placeholder.com/200x200/059669/ffffff?text=IV',
+    coverUrl: generatePlaceholderWithPreset('IV', 'green'),
     year: 1971,
   },
 }
@@ -99,7 +101,7 @@ export const SpotifyExample: Story = {
   args: {
     title: 'OK Computer',
     artist: 'Radiohead',
-    coverUrl: 'https://via.placeholder.com/200x200/0f172a/ffffff?text=OK+Computer',
+    coverUrl: generateAlbumArtPlaceholder('OK Computer', 'Radiohead'),
     year: 1997,
   },
   parameters: {
@@ -116,7 +118,7 @@ export const JapaneseTitle: Story = {
   args: {
     title: 'さくらんぼの実る頃',
     artist: '森高千里',
-    coverUrl: 'https://via.placeholder.com/200x200/ec4899/ffffff?text=森高千里',
+    coverUrl: generateAlbumArtPlaceholder('さくらんぼの実る頃', '森高千里'),
     year: 1989,
   },
 }
@@ -128,19 +130,19 @@ export const MultipleCards = {
       <AlbumCard
         title='Thriller'
         artist='Michael Jackson'
-        coverUrl='https://via.placeholder.com/200x200/fbbf24/000000?text=Thriller'
+        coverUrl={generatePlaceholderWithPreset('Thriller', 'yellow')}
         year={1982}
       />
       <AlbumCard
         title='Back in Black'
         artist='AC/DC'
-        coverUrl='https://via.placeholder.com/200x200/1f2937/ffffff?text=AC/DC'
+        coverUrl={generateAlbumArtPlaceholder('Back in Black', 'AC/DC')}
         year={1980}
       />
       <AlbumCard
         title='Hotel California'
         artist='Eagles'
-        coverUrl='https://via.placeholder.com/200x200/b91c1c/ffffff?text=Eagles'
+        coverUrl={generatePlaceholderWithPreset('Eagles', 'red')}
         year={1976}
       />
     </div>

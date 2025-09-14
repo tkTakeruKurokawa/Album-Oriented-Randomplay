@@ -11,7 +11,11 @@ const config: StorybookConfig = {
   ],
   framework: {
     name: '@storybook/react-vite',
-    options: {},
+    options: {
+      builder: {
+        viteConfigPath: undefined, // Storybookに独自のVite設定を使わせる
+      },
+    },
   },
   docs: {
     autodocs: 'tag',
@@ -35,6 +39,11 @@ const config: StorybookConfig = {
         '@': new URL('../src', import.meta.url).pathname,
       })
     }
+
+    // sharp関連モジュールを除外設定
+    config.optimizeDeps ??= {}
+    config.optimizeDeps.exclude ??= []
+    config.optimizeDeps.exclude.push('sharp', 'plaiceholder')
 
     // Next.js用のグローバル変数の定義
     config.define = config.define

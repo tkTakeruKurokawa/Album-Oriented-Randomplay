@@ -89,14 +89,17 @@
     ]
   },
   "dependencies": {
+    "@plaiceholder/next": "^3.0.0",
     "@types/node": "^22.15.3",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "axios": "^1.9.0",
     "next": "15.3.1",
     "next-auth": "^4.24.11",
+    "plaiceholder": "^3.0.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "sharp": "^0.34.3"
   },
   "msw": {
     "workerDirectory": [
