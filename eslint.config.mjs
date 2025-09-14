@@ -20,7 +20,7 @@ const __dirname = dirname(__filename);
 export default tseslint.config(
   // グローバルに無視するファイル
   {
-    ignores: ['node_modules/', '.next/', 'storybook-static/', 'eslint.config.mjs'],
+    ignores: ['node_modules/', '.next/', 'storybook-static/', 'public/', 'eslint.config.mjs'],
   },
 
   // 1. 基本設定 (ESLint推奨)

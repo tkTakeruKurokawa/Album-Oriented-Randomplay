@@ -1,10 +1,4 @@
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-
 import type { StorybookConfig } from '@storybook/react-vite'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
@@ -35,11 +29,32 @@ const config: StorybookConfig = {
     disableTelemetry: true,
   },
   viteFinal(config) {
+    // パスエイリアスの設定
     if (config.resolve) {
       config.resolve.alias = Object.assign(config.resolve.alias ?? {}, {
-        '@': path.resolve(__dirname, '../src'),
+        '@': new URL('../src', import.meta.url).pathname,
       })
     }
+
+    // Next.js用のグローバル変数の定義
+    config.define = config.define
+      ? Object.assign(config.define, {
+          global: 'globalThis',
+          process: JSON.stringify({
+            env: {
+              NODE_ENV: 'development',
+            },
+          }),
+        })
+      : {
+          global: 'globalThis',
+          process: JSON.stringify({
+            env: {
+              NODE_ENV: 'development',
+            },
+          }),
+        }
+
     return config
   },
 }

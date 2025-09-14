@@ -4,6 +4,12 @@ import type { Preview } from '@storybook/react'
 
 import '../src/styles/globals.css'
 
+// Next.js Image用の設定
+Object.defineProperty(globalThis, '__NEXT_IMAGE_IMPORTED', {
+  value: true,
+  writable: false,
+})
+
 // MSWの初期化
 initialize({
   onUnhandledRequest: 'bypass',
@@ -11,6 +17,13 @@ initialize({
 
 const preview: Preview = {
   parameters: {
+    // Next.js Image 用の設定
+    nextjs: {
+      appDirectory: true,
+      image: {
+        domains: ['localhost', 'via.placeholder.com'],
+      },
+    },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
