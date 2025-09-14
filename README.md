@@ -125,6 +125,47 @@ pnpm test:ui
 - **Next.js Image**: 最適化されたImage componentsのモック
 - **Browser APIs**: IntersectionObserver、ResizeObserver等のモック
 
+## Storybook
+
+UIコンポーネントの開発・テスト・ドキュメント化にStorybookを使用しています。
+
+### Storybookの特徴
+
+- **Framework**: React with Vite
+- **アドオン**:
+  - Essentials（Controls, Actions, Docs等）
+  - Accessibility（a11yテスト）
+  - Links（ストーリー間のナビゲーション）
+  - Interactions（ユーザーインタラクションのテスト）
+- **テーマ**: Spotifyカラーパレットに基づくカスタムテーマ
+- **レスポンシブ**: Mobile/Tablet/Desktopビューポート
+- **ドキュメント**: 自動生成されるコンポーネントドキュメント
+
+### Storybookの起動
+
+```bash
+# Storybookを開発モードで起動
+pnpm storybook
+
+# Storybookをビルド（静的ファイル生成）
+pnpm build-storybook
+```
+
+Storybookは http://localhost:6006 で実行されます。
+
+### ストーリーの構成
+
+- **Components**: 基本的なUIコンポーネント
+- **Providers**: 認証プロバイダー等のラッパーコンポーネント
+
+### コンポーネント開発ガイドライン
+
+1. **新しいコンポーネント作成時**: 対応する`.stories.tsx`ファイルも作成
+2. **Props**: TypeScriptの型定義を活用してControlsを自動生成
+3. **アクセシビリティ**: A11yアドオンでアクセシビリティをテスト
+4. **レスポンシブ**: 複数のビューポートでの表示を確認
+5. **テーマ**: ライト/ダークテーマでの表示を確認
+
 ## コントリビューション
 
 1. このリポジトリをフォーク

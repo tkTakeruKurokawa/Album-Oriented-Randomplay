@@ -1,11 +1,13 @@
-import '../src/styles/globals.css';
-import type { Preview } from '@storybook/react';
-import { initialize, mswLoader } from 'msw-storybook-addon';
+import { initialize, mswLoader } from 'msw-storybook-addon'
+
+import type { Preview } from '@storybook/react'
+
+import '../src/styles/globals.css'
 
 // MSWの初期化
 initialize({
   onUnhandledRequest: 'bypass',
-});
+})
 
 const preview: Preview = {
   parameters: {
@@ -13,8 +15,9 @@ const preview: Preview = {
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/,
+        date: /Date$/i,
       },
+      expanded: true,
     },
     layout: 'centered',
     backgrounds: {
@@ -22,20 +25,68 @@ const preview: Preview = {
       values: [
         {
           name: 'light',
-          value: '#f0f0f0',
+          value: '#ffffff',
         },
         {
           name: 'dark',
-          value: '#333333',
+          value: '#1a1a1a',
+        },
+        {
+          name: 'gray',
+          value: '#f5f5f5',
         },
       ],
     },
-    nextjs: {
-      appDirectory: true,
+    viewport: {
+      viewports: {
+        mobile: {
+          name: 'Mobile',
+          styles: {
+            width: '375px',
+            height: '667px',
+          },
+        },
+        tablet: {
+          name: 'Tablet',
+          styles: {
+            width: '768px',
+            height: '1024px',
+          },
+        },
+        desktop: {
+          name: 'Desktop',
+          styles: {
+            width: '1920px',
+            height: '1080px',
+          },
+        },
+      },
+    },
+    docs: {
+      story: {
+        inline: true,
+        height: '400px',
+      },
+    },
+    // A11yアドオンの設定
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: true,
+          },
+          {
+            id: 'focus-visible',
+            enabled: true,
+          },
+        ],
+      },
     },
   },
   // MSWを使用するためのローダーを追加
   loaders: [mswLoader],
-};
+  tags: ['autodocs'],
+}
 
-export default preview;
+export default preview
