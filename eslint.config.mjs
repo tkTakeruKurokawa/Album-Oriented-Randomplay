@@ -20,7 +20,7 @@ const __dirname = dirname(__filename);
 export default tseslint.config(
   // グローバルに無視するファイル
   {
-    ignores: ['node_modules/', '.next/', 'storybook-static/', 'public/', 'eslint.config.mjs'],
+    ignores: ['node_modules/', '.next/', 'storybook-static/', 'public/', 'eslint.config.mjs', '.storybook/**/*.ts', '.storybook/**/*.tsx'],
   },
 
   // 1. 基本設定 (ESLint推奨)
@@ -145,12 +145,12 @@ export default tseslint.config(
     },
   },
 
-  // 8. TypeScript用の設定
+  // 8. TypeScript用の設定（メインプロジェクト）
   {
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parserOptions: {
-        project: true,
+        project: './tsconfig.json',
         tsconfigRootDir: __dirname,
       },
     },
