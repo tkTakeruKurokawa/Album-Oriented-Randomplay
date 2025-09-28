@@ -42,6 +42,9 @@ importers:
         specifier: ^0.34.3
         version: 0.34.3
     devDependencies:
+      '@cloudfour/simple-svg-placeholder':
+        specifier: ^1.1.0
+        version: 1.1.0
       '@commitlint/cli':
         specifier: ^19.8.0
         version: 19.8.0(@types/node@22.15.12)(typescript@5.8.3)
@@ -780,6 +783,9 @@ packages:
 
   '@bundled-es-modules/tough-cookie@0.1.6':
     resolution: {integrity: sha512-dvMHbL464C0zI+Yqxbz6kZ5TOEp7GLW+pry/RWndAR8MJQAXZ2rPmIs8tziTZjeIyhSNZgZbCePtfSbdWqStJw==}
+
+  '@cloudfour/simple-svg-placeholder@1.1.0':
+    resolution: {integrity: sha512-023tyGesX8pSTm6J7wex1o/5mPo4HSSzd6hjb1ijpx3k/qCScSyWJRKXXVdK1srngAQcNe4HLEdR9HQnPxysKg==}
 
   '@commitlint/cli@19.8.0':
     resolution: {integrity: sha512-t/fCrLVu+Ru01h0DtlgHZXbHV2Y8gKocTR5elDOqIRUzQd0/6hpt2VIWOj9b3NDo7y4/gfxeR2zRtXq/qO6iUg==}
@@ -7012,6 +7018,8 @@ snapshots:
     dependencies:
       '@types/tough-cookie': 4.0.5
       tough-cookie: 4.1.4
+
+  '@cloudfour/simple-svg-placeholder@1.1.0': {}
 
   '@commitlint/cli@19.8.0(@types/node@22.15.12)(typescript@5.8.3)':
     dependencies:

@@ -2,7 +2,7 @@ import AlbumCard from './AlbumCard'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { generateAlbumArtPlaceholder, generatePlaceholderWithPreset } from '@/lib/placeholder'
+import { generateSvgPlaceholder } from '@/lib/placeholder'
 
 const meta = {
   title: 'Components/AlbumCard',
@@ -45,7 +45,7 @@ export const Default: Story = {
   args: {
     title: 'Abbey Road',
     artist: 'The Beatles',
-    coverUrl: generateAlbumArtPlaceholder('Abbey Road', 'The Beatles'),
+    coverUrl: generateSvgPlaceholder({ text: 'Abbey Road\nThe Beatles' }),
     year: 1969,
   },
 }
@@ -64,7 +64,7 @@ export const WithoutYear: Story = {
   args: {
     title: 'Random Access Memories',
     artist: 'Daft Punk',
-    coverUrl: generatePlaceholderWithPreset('RAM', 'red'),
+    coverUrl: generateSvgPlaceholder({ text: 'RAM', bgColor: '#dc2626' }),
   },
 }
 
@@ -73,7 +73,7 @@ export const LongTitle: Story = {
   args: {
     title: 'The Dark Side of the Moon: 50th Anniversary Edition Deluxe Box Set',
     artist: 'Pink Floyd',
-    coverUrl: generatePlaceholderWithPreset('Pink Floyd', 'purple'),
+    coverUrl: generateSvgPlaceholder({ text: 'Pink Floyd', bgColor: '#7c3aed' }),
     year: 1973,
   },
 }
@@ -83,7 +83,7 @@ export const ShortTitle: Story = {
   args: {
     title: 'IV',
     artist: 'Led Zeppelin',
-    coverUrl: generatePlaceholderWithPreset('IV', 'green'),
+    coverUrl: generateSvgPlaceholder({ text: 'IV', bgColor: '#059669' }),
     year: 1971,
   },
 }
@@ -101,7 +101,7 @@ export const SpotifyExample: Story = {
   args: {
     title: 'OK Computer',
     artist: 'Radiohead',
-    coverUrl: generateAlbumArtPlaceholder('OK Computer', 'Radiohead'),
+    coverUrl: generateSvgPlaceholder({ text: 'OK Computer\nRadiohead' }),
     year: 1997,
   },
   parameters: {
@@ -118,7 +118,7 @@ export const JapaneseTitle: Story = {
   args: {
     title: 'さくらんぼの実る頃',
     artist: '森高千里',
-    coverUrl: generateAlbumArtPlaceholder('さくらんぼの実る頃', '森高千里'),
+    coverUrl: generateSvgPlaceholder({ text: 'さくらんぼの実る頃\n森高千里' }),
     year: 1989,
   },
 }
@@ -130,19 +130,19 @@ export const MultipleCards = {
       <AlbumCard
         title='Thriller'
         artist='Michael Jackson'
-        coverUrl={generatePlaceholderWithPreset('Thriller', 'yellow')}
+        coverUrl={generateSvgPlaceholder({ text: 'Thriller', bgColor: '#fbbf24' })}
         year={1982}
       />
       <AlbumCard
         title='Back in Black'
         artist='AC/DC'
-        coverUrl={generateAlbumArtPlaceholder('Back in Black', 'AC/DC')}
+        coverUrl={generateSvgPlaceholder({ text: 'Back in Black\nAC/DC' })}
         year={1980}
       />
       <AlbumCard
         title='Hotel California'
         artist='Eagles'
-        coverUrl={generatePlaceholderWithPreset('Eagles', 'red')}
+        coverUrl={generateSvgPlaceholder({ text: 'Eagles', bgColor: '#dc2626' })}
         year={1976}
       />
     </div>
