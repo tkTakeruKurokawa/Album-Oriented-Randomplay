@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import React from 'react'
 
 import styles from '@/styles/AlbumCard.module.css'
 
@@ -10,7 +9,7 @@ interface AlbumCardProps {
   year?: number
 }
 
-const AlbumCard: React.FC<AlbumCardProps> = ({ title, artist, coverUrl, year }) => {
+const AlbumCard = ({ title, artist, coverUrl, year }: AlbumCardProps) => {
   return (
     <div className={styles.card}>
       {coverUrl && (

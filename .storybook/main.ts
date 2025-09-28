@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite'
+import react from '@vitejs/plugin-react-swc'
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
@@ -60,6 +61,14 @@ const config: StorybookConfig = {
             },
           }),
         }
+
+    // React自動インポート設定（新しいJSX Transform使用）
+    config.plugins = config.plugins ?? []
+    config.plugins.unshift(
+      react({
+        jsxImportSource: 'react',
+      }),
+    )
 
     return config
   },
