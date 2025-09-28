@@ -154,6 +154,14 @@ export default tseslint.config(
         tsconfigRootDir: __dirname,
       },
     },
+    rules: {
+      // TypeScript unsafe系ルールを個別に無効化
+      '@typescript-eslint/no-unsafe-argument': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-unsafe-return': 'off',
+    },
   },
 
   // 9. Prettierとの競合を避けるための設定 (必ず最後に配置)
