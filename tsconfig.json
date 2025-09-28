@@ -5,7 +5,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "bundler",
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "incremental": true,
     /* 型チェックの厳格化設定 */
     "strict": true,

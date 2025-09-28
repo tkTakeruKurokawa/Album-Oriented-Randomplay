@@ -11,11 +11,7 @@ const config: StorybookConfig = {
   ],
   framework: {
     name: '@storybook/react-vite',
-    options: {
-      builder: {
-        viteConfigPath: undefined, // Storybookに独自のVite設定を使わせる
-      },
-    },
+    options: {},
   },
   docs: {
     autodocs: 'tag',
@@ -37,6 +33,7 @@ const config: StorybookConfig = {
     if (config.resolve) {
       config.resolve.alias = Object.assign(config.resolve.alias ?? {}, {
         '@': new URL('../src', import.meta.url).pathname,
+        'next/image': new URL('../src/mocks/NextImageMock.tsx', import.meta.url).pathname,
       })
     }
 
