@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from 'react'
 
 // next/imageのpropsを型定義としてインポート
