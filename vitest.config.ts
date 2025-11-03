@@ -1,11 +1,11 @@
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-import react from '@vitejs/plugin-react-swc'
-import { defineConfig } from 'vitest/config'
+import react from '@vitejs/plugin-react-swc';
+import { defineConfig } from 'vitest/config';
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
@@ -33,7 +33,14 @@ export default defineConfig({
       include: ['src/**/*.{js,ts,jsx,tsx}'],
     },
     include: ['src/**/*.{test,spec}.{js,ts,jsx,tsx}'],
-    exclude: ['node_modules', '.next', 'coverage', 'dist', '.storybook', '**/storybook-static/**'],
+    exclude: [
+      'node_modules',
+      '.next',
+      'coverage',
+      'dist',
+      '.storybook',
+      '**/storybook-static/**',
+    ],
     // テスト実行時のタイムアウト設定
     testTimeout: 10_000,
     hookTimeout: 10_000,
@@ -58,4 +65,4 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-})
+});

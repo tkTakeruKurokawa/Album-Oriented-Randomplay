@@ -1,6 +1,6 @@
-import { http, HttpResponse } from 'msw'
+import { http, HttpResponse } from 'msw';
 
-import type { SpotifyAlbum } from '@/types/spotify/albums'
+import type { SpotifyAlbum } from '@/types/spotify/albums';
 
 // モックデータ
 const mockAlbums: SpotifyAlbum[] = [
@@ -50,7 +50,7 @@ const mockAlbums: SpotifyAlbum[] = [
       spotify: 'https://open.spotify.com/album/album-2',
     },
   },
-]
+];
 
 // モックハンドラーを作成
 export const handlers = [
@@ -62,7 +62,7 @@ export const handlers = [
       expires_in: 3600,
       refresh_token: 'mocked-refresh-token',
       scope: 'user-library-read user-read-private user-read-email',
-    })
+    });
   }),
 
   // ユーザー情報のモック
@@ -83,22 +83,22 @@ export const handlers = [
           width: 300,
         },
       ],
-    })
+    });
   }),
 
   // ユーザーのアルバム一覧のモック
   http.get('https://api.spotify.com/v1/me/albums', ({ request }) => {
-    const url = new URL(request.url)
-    const limit = Number(url.searchParams.get('limit')) || 20
-    const offset = Number(url.searchParams.get('offset')) || 0
+    const url = new URL(request.url);
+    const limit = Number(url.searchParams.get('limit')) || 20;
+    const offset = Number(url.searchParams.get('offset')) || 0;
 
-    const items = mockAlbums.slice(offset, offset + limit).map(album => ({
+    const items = mockAlbums.slice(offset, offset + limit).map((album) => ({
       added_at: '2023-01-01T00:00:00Z',
       album,
-    }))
+    }));
 
-    const nextOffset = offset + limit
-    const prevOffset = Math.max(0, offset - limit)
+    const nextOffset = offset + limit;
+    const prevOffset = Math.max(0, offset - limit);
 
     return HttpResponse.json({
       items,
@@ -113,22 +113,22 @@ export const handlers = [
         offset > 0
           ? `https://api.spotify.com/v1/me/albums?offset=${prevOffset.toString()}&limit=${limit.toString()}`
           : null,
-    })
+    });
   }),
 
   // 特定のアルバム情報のモック
   http.get('https://api.spotify.com/v1/albums/:id', ({ params }) => {
-    const { id } = params
-    const album = mockAlbums.find(a => a.id === id)
+    const { id } = params;
+    const album = mockAlbums.find((a) => a.id === id);
 
     if (!album) {
       return HttpResponse.json(
         { error: { status: 404, message: 'Album not found' } },
-        { status: 404 },
-      )
+        { status: 404 }
+      );
     }
 
-    return HttpResponse.json(album)
+    return HttpResponse.json(album);
   }),
 
   // プレイリスト作成のモック
@@ -142,14 +142,14 @@ export const handlers = [
       external_urls: {
         spotify: 'https://open.spotify.com/playlist/mock-playlist-id',
       },
-    })
+    });
   }),
 
   // プレイリストにトラック追加のモック
   http.post('https://api.spotify.com/v1/playlists/:playlistId/tracks', () => {
     return HttpResponse.json({
       snapshot_id: 'mock-snapshot-id',
-    })
+    });
   }),
 
   // NextAuth.js API routesのモック
@@ -163,14 +163,14 @@ export const handlers = [
       },
       accessToken: 'mocked-access-token',
       expires: new Date(Date.now() + 3_600_000).toISOString(),
-    })
+    });
   }),
 
   // CSRFトークンのモック
   http.get('/api/auth/csrf', () => {
     return HttpResponse.json({
       csrfToken: 'mock-csrf-token',
-    })
+    });
   }),
 
   // プロバイダー情報のモック
@@ -183,6 +183,6 @@ export const handlers = [
         signinUrl: '/api/auth/signin/spotify',
         callbackUrl: '/api/auth/callback/spotify',
       },
-    })
+    });
   }),
-]
+];

@@ -1,6 +1,6 @@
-import NextAuthProvider from './SessionProvider'
+import NextAuthProvider from './SessionProvider';
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
   title: 'Providers/NextAuthProvider',
@@ -15,37 +15,45 @@ const meta = {
     },
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof NextAuthProvider>
+} satisfies Meta<typeof NextAuthProvider>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 // 基本的なストーリー
 export const Default: Story = {
   args: {
     children: (
-      <div className='p-4 border border-gray-300 rounded-lg'>
-        <h3 className='text-lg font-semibold mb-2'>認証されたコンテンツ</h3>
-        <p className='text-gray-600'>
+      <div className="rounded-lg border border-gray-300 p-4">
+        <h3 className="mb-2 text-lg font-semibold">認証されたコンテンツ</h3>
+        <p className="text-gray-600">
           このコンテンツはNextAuthProviderでラップされており、認証状態にアクセスできます。
         </p>
       </div>
     ),
   },
-}
+};
 
 // 複数の子要素を含むストーリー
 export const WithMultipleChildren: Story = {
   args: {
     children: (
       <>
-        <div className='p-4 border border-blue-300 rounded-lg mb-4'>
-          <h3 className='text-lg font-semibold text-blue-700 mb-2'>ユーザー情報</h3>
-          <p className='text-blue-600'>ユーザーのプロフィール情報がここに表示されます。</p>
+        <div className="mb-4 rounded-lg border border-blue-300 p-4">
+          <h3 className="mb-2 text-lg font-semibold text-blue-700">
+            ユーザー情報
+          </h3>
+          <p className="text-blue-600">
+            ユーザーのプロフィール情報がここに表示されます。
+          </p>
         </div>
-        <div className='p-4 border border-green-300 rounded-lg'>
-          <h3 className='text-lg font-semibold text-green-700 mb-2'>プレイリスト</h3>
-          <p className='text-green-600'>Spotifyのプレイリスト一覧がここに表示されます。</p>
+        <div className="rounded-lg border border-green-300 p-4">
+          <h3 className="mb-2 text-lg font-semibold text-green-700">
+            プレイリスト
+          </h3>
+          <p className="text-green-600">
+            Spotifyのプレイリスト一覧がここに表示されます。
+          </p>
         </div>
       </>
     ),
@@ -53,20 +61,20 @@ export const WithMultipleChildren: Story = {
   parameters: {
     layout: 'padded',
   },
-}
+};
 
 // エラー境界のテスト用ストーリー
 export const WithErrorComponent: Story = {
   args: {
     children: (
-      <div className='p-4 border border-red-300 rounded-lg'>
-        <h3 className='text-lg font-semibold text-red-700 mb-2'>エラー状態</h3>
-        <p className='text-red-600'>認証エラーが発生した場合の表示例です。</p>
+      <div className="rounded-lg border border-red-300 p-4">
+        <h3 className="mb-2 text-lg font-semibold text-red-700">エラー状態</h3>
+        <p className="text-red-600">認証エラーが発生した場合の表示例です。</p>
         <button
-          type='button'
-          className='mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600'
+          type="button"
+          className="mt-2 rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600"
           onClick={() => {
-            console.log('再認証を試行')
+            console.log('再認証を試行');
           }}
         >
           再認証
@@ -74,4 +82,4 @@ export const WithErrorComponent: Story = {
       </div>
     ),
   },
-}
+};

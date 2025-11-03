@@ -2,9 +2,9 @@
  * テスト用のユーティリティ関数とヘルパー
  */
 
-import { render, RenderOptions } from '@testing-library/react'
-import { ReactElement } from 'react'
-import { expect, vi } from 'vitest'
+import { render, RenderOptions } from '@testing-library/react';
+import { ReactElement } from 'react';
+import { expect, vi } from 'vitest';
 
 // Next.js useRouterのモック
 export const mockUseRouter = vi.fn(() => ({
@@ -16,7 +16,7 @@ export const mockUseRouter = vi.fn(() => ({
   query: {},
   asPath: '/',
   route: '/',
-}))
+}));
 
 // Next.js useSessionのモック
 export const mockUseSession = vi.fn(() => ({
@@ -31,18 +31,21 @@ export const mockUseSession = vi.fn(() => ({
     expires: new Date(Date.now() + 3_600_000).toISOString(),
   },
   status: 'authenticated',
-}))
+}));
 
 // カスタムレンダー関数
 interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
-  wrapper?: React.ComponentType<{ children: React.ReactNode }>
+  wrapper?: React.ComponentType<{ children: React.ReactNode }>;
 }
 
-export const customRender = (ui: ReactElement, options?: CustomRenderOptions) => {
+export const customRender = (
+  ui: ReactElement,
+  options?: CustomRenderOptions
+) => {
   return render(ui, {
     ...options,
-  })
-}
+  });
+};
 
 // テスト用のモックセッション
 export const mockSession = {
@@ -54,7 +57,7 @@ export const mockSession = {
   },
   accessToken: 'mocked-access-token',
   expires: new Date(Date.now() + 3_600_000).toISOString(),
-}
+};
 
 // モックアルバムデータ
 export const mockAlbumData = {
@@ -74,63 +77,64 @@ export const mockAlbumData = {
   external_urls: {
     spotify: 'https://open.spotify.com/album/test-album-id',
   },
-}
+};
 
 // MSWレスポンス待機用ヘルパー
-export const waitForMswResponse = () => new Promise(resolve => setTimeout(resolve, 100))
+export const waitForMswResponse = () =>
+  new Promise((resolve) => setTimeout(resolve, 100));
 
 // LocalStorageのモック
 export const mockLocalStorage = (() => {
-  let store: Record<string, string> = {}
+  let store: Record<string, string> = {};
 
   return {
     getItem: vi.fn((key: string) => store[key] ?? null),
     setItem: vi.fn((key: string, value: string) => {
-      store[key] = value.toString()
+      store[key] = value.toString();
     }),
     removeItem: vi.fn((key: string) => {
       // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-      delete store[key]
+      delete store[key];
     }),
     clear: vi.fn(() => {
-      store = {}
+      store = {};
     }),
-  }
-})()
+  };
+})();
 
 // SessionStorageのモック
 export const mockSessionStorage = (() => {
-  let store: Record<string, string> = {}
+  let store: Record<string, string> = {};
 
   return {
     getItem: vi.fn((key: string) => store[key] ?? null),
     setItem: vi.fn((key: string, value: string) => {
-      store[key] = value.toString()
+      store[key] = value.toString();
     }),
     removeItem: vi.fn((key: string) => {
       // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-      delete store[key]
+      delete store[key];
     }),
     clear: vi.fn(() => {
-      store = {}
+      store = {};
     }),
-  }
-})()
+  };
+})();
 
 // モック用のアサーションヘルパー
 export const expectToBeVisible = (element: HTMLElement) => {
-  expect(element).toBeVisible()
-  expect(element).toBeInTheDocument()
-}
+  expect(element).toBeVisible();
+  expect(element).toBeInTheDocument();
+};
 
 export const expectToHaveText = (element: HTMLElement, text: string) => {
-  expect(element).toHaveTextContent(text)
-  expect(element).toBeInTheDocument()
-}
+  expect(element).toHaveTextContent(text);
+  expect(element).toBeInTheDocument();
+};
 
 // デバッグ用のヘルパー
 export const logElementForDebugging = (element: HTMLElement) => {
-  console.log('Element HTML:', element.outerHTML)
-  console.log('Element text content:', element.textContent)
-  console.log('Element attributes:', element.attributes)
-}
+  console.log('Element HTML:', element.outerHTML);
+  console.log('Element text content:', element.textContent);
+  console.log('Element attributes:', element.attributes);
+};

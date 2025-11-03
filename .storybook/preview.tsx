@@ -1,14 +1,14 @@
-import React from 'react'
-import { initialize, mswLoader } from 'msw-storybook-addon'
+import React from 'react';
+import { initialize, mswLoader } from 'msw-storybook-addon';
 
-import type { Preview } from '@storybook/react'
+import type { Preview } from '@storybook/react';
 
-import '../src/styles/globals.css'
+import '../src/styles/globals.css';
 
 // MSWの初期化
 initialize({
   onUnhandledRequest: 'bypass',
-})
+});
 
 const preview: Preview = {
   parameters: {
@@ -88,6 +88,6 @@ const preview: Preview = {
   // MSWを使用するためのローダーを追加
   loaders: [mswLoader],
   tags: ['autodocs'],
-}
+};
 
-export default preview
+export default preview;

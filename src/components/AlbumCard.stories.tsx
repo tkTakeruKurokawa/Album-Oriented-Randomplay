@@ -1,8 +1,8 @@
-import AlbumCard from './AlbumCard'
+import AlbumCard from './AlbumCard';
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { generateSvgPlaceholder } from '@/lib/placeholder'
+import { generateSvgPlaceholder } from '@/lib/placeholder';
 
 const meta = {
   title: 'Components/AlbumCard',
@@ -35,10 +35,10 @@ const meta = {
       description: 'リリース年（オプション）',
     },
   },
-} satisfies Meta<typeof AlbumCard>
+} satisfies Meta<typeof AlbumCard>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 // 基本的なストーリー
 export const Default: Story = {
@@ -48,7 +48,7 @@ export const Default: Story = {
     coverUrl: generateSvgPlaceholder({ text: 'Abbey Road\nThe Beatles' }),
     year: 1969,
   },
-}
+};
 
 // 画像なしのストーリー
 export const WithoutImage: Story = {
@@ -57,7 +57,7 @@ export const WithoutImage: Story = {
     artist: 'Unknown Artist',
     year: 2024,
   },
-}
+};
 
 // 年なしのストーリー
 export const WithoutYear: Story = {
@@ -66,17 +66,20 @@ export const WithoutYear: Story = {
     artist: 'Daft Punk',
     coverUrl: generateSvgPlaceholder({ text: 'RAM', bgColor: '#dc2626' }),
   },
-}
+};
 
 // 長いタイトルのストーリー
 export const LongTitle: Story = {
   args: {
     title: 'The Dark Side of the Moon: 50th Anniversary Edition Deluxe Box Set',
     artist: 'Pink Floyd',
-    coverUrl: generateSvgPlaceholder({ text: 'Pink Floyd', bgColor: '#7c3aed' }),
+    coverUrl: generateSvgPlaceholder({
+      text: 'Pink Floyd',
+      bgColor: '#7c3aed',
+    }),
     year: 1973,
   },
-}
+};
 
 // 短いタイトルのストーリー
 export const ShortTitle: Story = {
@@ -86,7 +89,7 @@ export const ShortTitle: Story = {
     coverUrl: generateSvgPlaceholder({ text: 'IV', bgColor: '#059669' }),
     year: 1971,
   },
-}
+};
 
 // 最小構成（必須プロパティのみ）
 export const MinimalProps: Story = {
@@ -94,7 +97,7 @@ export const MinimalProps: Story = {
     title: 'Test Album',
     artist: 'Test Artist',
   },
-}
+};
 
 // 実際のSpotifyアルバムサンプル（プレースホルダー画像使用）
 export const SpotifyExample: Story = {
@@ -111,7 +114,7 @@ export const SpotifyExample: Story = {
       },
     },
   },
-}
+};
 
 // 日本語タイトルのテスト
 export const JapaneseTitle: Story = {
@@ -121,28 +124,34 @@ export const JapaneseTitle: Story = {
     coverUrl: generateSvgPlaceholder({ text: 'さくらんぼの実る頃\n森高千里' }),
     year: 1989,
   },
-}
+};
 
 // 複数のカードを並べて表示するストーリー
 export const MultipleCards = {
   render: () => (
-    <div className='grid grid-cols-3 gap-4'>
+    <div className="grid grid-cols-3 gap-4">
       <AlbumCard
-        title='Thriller'
-        artist='Michael Jackson'
-        coverUrl={generateSvgPlaceholder({ text: 'Thriller', bgColor: '#fbbf24' })}
+        title="Thriller"
+        artist="Michael Jackson"
+        coverUrl={generateSvgPlaceholder({
+          text: 'Thriller',
+          bgColor: '#fbbf24',
+        })}
         year={1982}
       />
       <AlbumCard
-        title='Back in Black'
-        artist='AC/DC'
+        title="Back in Black"
+        artist="AC/DC"
         coverUrl={generateSvgPlaceholder({ text: 'Back in Black\nAC/DC' })}
         year={1980}
       />
       <AlbumCard
-        title='Hotel California'
-        artist='Eagles'
-        coverUrl={generateSvgPlaceholder({ text: 'Eagles', bgColor: '#dc2626' })}
+        title="Hotel California"
+        artist="Eagles"
+        coverUrl={generateSvgPlaceholder({
+          text: 'Eagles',
+          bgColor: '#dc2626',
+        })}
         year={1976}
       />
     </div>
@@ -155,4 +164,4 @@ export const MultipleCards = {
       },
     },
   },
-} satisfies StoryObj
+} satisfies StoryObj;

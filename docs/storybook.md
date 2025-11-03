@@ -65,8 +65,8 @@ pnpm build-storybook
 ### 基本的なストーリーファイルの構造
 
 ```typescript
-import type { Meta, StoryObj } from '@storybook/react'
-import YourComponent from './YourComponent'
+import type { Meta, StoryObj } from '@storybook/react';
+import YourComponent from './YourComponent';
 
 const meta = {
   title: 'Components/YourComponent',
@@ -83,16 +83,16 @@ const meta = {
   argTypes: {
     // プロパティの設定
   },
-} satisfies Meta<typeof YourComponent>
+} satisfies Meta<typeof YourComponent>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
     // デフォルトプロパティ
   },
-}
+};
 ```
 
 ### ストーリーのベストプラクティス

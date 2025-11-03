@@ -1,6 +1,7 @@
 # Album-Oriented-Randomplay - Copilot Instructions
 
-このファイルは、GitHub CopilotがAlbum-Oriented-Randomplayプロジェクトの技術スタックと設定を理解するための指示書です。
+このファイルは、GitHub
+CopilotがAlbum-Oriented-Randomplayプロジェクトの技術スタックと設定を理解するための指示書です。
 
 ## プロジェクト概要
 

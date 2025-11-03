@@ -1,9 +1,9 @@
-import { setupWorker } from 'msw/browser'
+import { setupWorker } from 'msw/browser';
 
-import { handlers } from './handlers'
+import { handlers } from './handlers';
 
 // ブラウザ環境用のMSWワーカーをセットアップ
-export const worker = setupWorker(...handlers)
+export const worker = setupWorker(...handlers);
 
 // この関数を開発環境で呼び出してモックを有効化
 export function initMocks(): void {
@@ -12,8 +12,8 @@ export function initMocks(): void {
       .start({
         onUnhandledRequest: 'bypass', // 未処理のリクエストは実際のAPIに流す
       })
-      .catch(console.error)
+      .catch(console.error);
 
-    console.log('[MSW] Mock Service Worker起動しました')
+    console.log('[MSW] Mock Service Worker起動しました');
   }
 }

@@ -1,5 +1,5 @@
-import type { StorybookConfig } from '@storybook/react-vite'
-import react from '@vitejs/plugin-react-swc'
+import type { StorybookConfig } from '@storybook/react-vite';
+import react from '@vitejs/plugin-react-swc';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
@@ -34,14 +34,15 @@ const config: StorybookConfig = {
     if (config.resolve) {
       config.resolve.alias = Object.assign(config.resolve.alias ?? {}, {
         '@': new URL('../src', import.meta.url).pathname,
-        'next/image': new URL('../src/mocks/NextImageMock.tsx', import.meta.url).pathname,
-      })
+        'next/image': new URL('../src/mocks/NextImageMock.tsx', import.meta.url)
+          .pathname,
+      });
     }
 
     // sharp関連モジュールを除外設定
-    config.optimizeDeps ??= {}
-    config.optimizeDeps.exclude ??= []
-    config.optimizeDeps.exclude.push('sharp', 'plaiceholder')
+    config.optimizeDeps ??= {};
+    config.optimizeDeps.exclude ??= [];
+    config.optimizeDeps.exclude.push('sharp', 'plaiceholder');
 
     // Next.js用のグローバル変数の定義
     config.define = config.define
@@ -60,18 +61,18 @@ const config: StorybookConfig = {
               NODE_ENV: 'development',
             },
           }),
-        }
+        };
 
     // React自動インポート設定（新しいJSX Transform使用）
-    config.plugins = config.plugins ?? []
+    config.plugins = config.plugins ?? [];
     config.plugins.unshift(
       react({
         jsxImportSource: 'react',
-      }),
-    )
+      })
+    );
 
-    return config
+    return config;
   },
-}
+};
 
-export default config
+export default config;

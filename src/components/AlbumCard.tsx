@@ -1,12 +1,12 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
-import styles from '@/styles/AlbumCard.module.css'
+import styles from '@/styles/AlbumCard.module.css';
 
 interface AlbumCardProps {
-  title: string
-  artist: string
-  coverUrl?: string
-  year?: number
+  title: string;
+  artist: string;
+  coverUrl?: string;
+  year?: number;
 }
 
 const AlbumCard = ({ title, artist, coverUrl, year }: AlbumCardProps) => {
@@ -14,7 +14,12 @@ const AlbumCard = ({ title, artist, coverUrl, year }: AlbumCardProps) => {
     <div className={styles.card}>
       {coverUrl && (
         <div className={styles.coverImage}>
-          <Image src={coverUrl} alt={`${title} by ${artist}`} width={200} height={200} />
+          <Image
+            src={coverUrl}
+            alt={`${title} by ${artist}`}
+            width={200}
+            height={200}
+          />
         </div>
       )}
       <div className={styles.info}>
@@ -23,7 +28,7 @@ const AlbumCard = ({ title, artist, coverUrl, year }: AlbumCardProps) => {
         {year && <p className={styles.year}>{year}</p>}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AlbumCard
+export default AlbumCard;
