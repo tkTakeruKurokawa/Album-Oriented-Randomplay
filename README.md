@@ -44,8 +44,7 @@
    pnpm install
    ```
 
-3. 環境変数の設定:
-   `.env.example`ファイルを`.env.local`にコピーして必要な値を設定してください:
+3. 環境変数の設定: `.env.example`ファイルを`.env.local`にコピーして必要な値を設定してください:
 
    ```
    cp .env.example .env.local
