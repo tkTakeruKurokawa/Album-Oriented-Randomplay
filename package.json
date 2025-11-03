@@ -25,10 +25,10 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@8.15.4",
+  "packageManager": "pnpm@9.15.2",
   "volta": {
     "node": "20.12.1",
-    "pnpm": "8.15.4"
+    "pnpm": "9.15.2"
   },
   "devDependencies": {
     "@cloudfour/simple-svg-placeholder": "^1.1.0",
