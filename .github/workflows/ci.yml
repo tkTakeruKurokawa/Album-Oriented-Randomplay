@@ -7,11 +7,18 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  # コード品質チェック（並列実行）
+  lint:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [20.x]
+        check:
+          - { name: "Prettier", command: "pnpm format:check" }
+          - { name: "ESLint", command: "pnpm lint" }
+          - { name: "Stylelint", command: "pnpm lint:style" }
+          - { name: "TypeScript", command: "pnpm exec tsc --noEmit" }
+    name: Lint - ${{ matrix.check.name }}
     steps:
       - uses: actions/checkout@v4
 
@@ -20,29 +27,60 @@ jobs:
         with:
           version: 9.15.2
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20.x
           cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Check code formatting
-        run: pnpm format:check
+      - name: Run ${{ matrix.check.name }}
+        run: ${{ matrix.check.command }}
 
-      - name: Run ESLint
-        run: pnpm lint
+  # テスト
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-      - name: Run Stylelint
-        run: pnpm lint:style
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9.15.2
 
-      - name: Run type check
-        run: pnpm exec tsc --noEmit
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Run tests
         run: pnpm test:ci
+
+  # ビルド
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9.15.2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build
         run: pnpm build
