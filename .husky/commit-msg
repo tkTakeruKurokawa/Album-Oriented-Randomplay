@@ -1,9 +1,22 @@
-#!/usr/bin/env bash
-# Husky v9+向けの最新フォーマット
+#!/usr/bin/env sh
+
+# エラーが発生した場合、即座に終了
+set -e
 
 echo "📝 Validating commit message..."
 
 # コミットメッセージをcommitlintで検証する
-npx --no -- commitlint --edit $1
+pnpm exec commitlint --edit "$1" || {
+  echo "❌ Commit message validation failed"
+  echo "💡 Please follow the Conventional Commits format:"
+  echo "   feat: add new feature"
+  echo "   fix: fix bug"
+  echo "   docs: update documentation"
+  echo "   style: format code"
+  echo "   refactor: refactor code"
+  echo "   test: add tests"
+  echo "   chore: update dependencies"
+  exit 1
+}
 
 echo "✅ Commit message validation passed!"

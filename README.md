@@ -201,6 +201,32 @@ Storybookは http://localhost:6006 で実行されます。
 - `test`: テストの追加や修正
 - `chore`: ビルドプロセスやツールの変更
 
+## Git Hooks (Husky)
+
+このプロジェクトでは、コード品質を保証するためにHuskyとlint-stagedを使用しています。以下のGitフックが自動的に実行されます：
+
+- **pre-commit**:
+  - lint-stagedでステージングされたファイルのみチェック（高速化）
+  - ESLint、Stylelint、Prettierをキャッシュ機能付きで実行
+  - TypeScript型チェック（増分ビルド対応）
+- **commit-msg**: コミットメッセージのConventional Commits形式チェック
+- **prepare-commit-msg**: ブランチ名に基づく自動プレフィックス追加（例:
+  `feat/`ブランチで`feat: `を自動追加）
+
+### パフォーマンス
+
+初回実行後はキャッシュにより大幅に高速化されます（通常1秒未満）。
+
+詳細は [docs/husky.md](./docs/husky.md) を参照してください。
+
+### フックのスキップ（緊急時のみ）
+
+```bash
+git commit --no-verify -m "message"
+# または
+HUSKY=0 git commit -m "message"
+```
+
 ## ライセンス
 
 MIT

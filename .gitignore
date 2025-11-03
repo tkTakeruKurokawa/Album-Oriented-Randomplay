@@ -48,6 +48,9 @@ web_modules/
 # TypeScript cache
 *.tsbuildinfo
 
+# TypeScript incremental build info
+tsconfig.tsbuildinfo
+
 # Optional npm cache directory
 .npm
 
@@ -56,6 +59,12 @@ web_modules/
 
 # Optional stylelint cache
 .stylelintcache
+
+# Prettier cache
+.prettiercache
+
+# Lint-staged cache
+node_modules/.cache/
 
 # Microbundle cache
 .rpt2_cache/

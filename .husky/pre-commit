@@ -1,14 +1,23 @@
-#!/usr/bin/env bash
-# Husky v9+向けの最新フォーマット
+#!/usr/bin/env sh
+
+# エラーが発生した場合、即座に終了
+set -e
 
 echo "🔍 Running pre-commit checks..."
 
-# TypeScript型チェック
-echo "📝 TypeScript type checking..."
-npx tsc --noEmit
-
 # lint-stagedを実行（ESLint、Stylelint、Prettier）
-echo "🧹 Running linters and formatters..."
-npx lint-staged
+# キャッシュを活用して高速化
+echo "🧹 Running linters and formatters on staged files..."
+pnpm exec lint-staged || {
+  echo "❌ Lint-staged checks failed"
+  exit 1
+}
+
+# TypeScript型チェック（増分ビルドを活用）
+echo "📝 TypeScript type checking..."
+pnpm exec tsc --noEmit --incremental || {
+  echo "❌ TypeScript type check failed"
+  exit 1
+}
 
 echo "✅ Pre-commit checks completed successfully!"
