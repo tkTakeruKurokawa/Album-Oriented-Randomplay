@@ -1,6 +1,8 @@
 ````markdown
 # Album-Oriented-Randomplay
 
+[![CI](https://github.com/tkTakeruKurokawa/Album-Oriented-Randomplay/actions/workflows/ci.yml/badge.svg)](https://github.com/tkTakeruKurokawa/Album-Oriented-Randomplay/actions/workflows/ci.yml)
+
 アルバム単位でSpotifyの楽曲をランダム再生できるWebアプリケーションです。Spotifyに保存したアルバムをランダムに選択して再生することができます。
 
 ## 機能
@@ -66,8 +68,12 @@
 - `pnpm build`: プロダクションビルドを作成
 - `pnpm start`: プロダクションビルドを実行
 - `pnpm lint`: ESLintでコードをチェック
+- `pnpm lint:style`: Stylelintでスタイルをチェック
+- `pnpm lint:all`: ESLintとStylelintの両方を実行
 - `pnpm format`: Prettierでコードをフォーマット
+- `pnpm format:check`: コードフォーマットのチェック（CI用）
 - `pnpm test`: Vitestでテストを実行
+- `pnpm test:ci`: CI環境でテストを実行（watchモードなし）
 - `pnpm test:watch`: ウォッチモードでテストを実行
 - `pnpm test:coverage`: テストカバレッジを表示
 - `pnpm test:ui`: Vitest UIでテストを実行
