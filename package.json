@@ -77,19 +77,6 @@
     "vite": "^6.3.5",
     "vitest": "^3.1.2"
   },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{css,scss}": [
-      "stylelint --fix",
-      "prettier --write"
-    ],
-    "*.{json,md,yml,yaml}": [
-      "prettier --write"
-    ]
-  },
   "dependencies": {
     "@plaiceholder/next": "^3.0.0",
     "@types/node": "^22.15.3",

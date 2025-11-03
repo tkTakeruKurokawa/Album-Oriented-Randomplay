@@ -26,10 +26,11 @@ SpotifyのOAuthを使用したアルバム単位でのランダム再生機能�
 - **Vitest**: 3.1.2 - テストフレームワーク
 - **React Testing Library**: 16.3.0 - Reactコンポーネントテスト
 - **MSW**: 2.7.5 - APIモック
-- **ESLint**: 9.25.1 - コード品質チェック
-- **Prettier**: 3.5.3 - コードフォーマッター
-- **Stylelint**: 16.19.1 - CSSリンター
-- **Husky**: 9.1.7 - Gitフック
+- **ESLint**: 9.25.1 - コード品質チェック（キャッシュ対応）
+- **Prettier**: 3.5.3 - コードフォーマッター（キャッシュ対応）
+- **Stylelint**: 16.19.1 - CSSリンター（キャッシュ対応）
+- **Husky**: 9.1.7 - Gitフック管理
+- **lint-staged**: 15.5.1 - ステージングファイルのlint実行
 - **Commitlint**: 19.8.0 - コミットメッセージ規約
 
 ### 開発ツール
@@ -64,6 +65,10 @@ src/
 - **ESLint**: Next.js推奨 + TypeScript + React Hooks + アクセシビリティ
 - **コミット**: Conventional Commits規約に従う
 - **パスエイリアス**: `@/*` で `./src/*` にマッピング
+- **Git Hooks**: Huskyとlint-stagedでコミット前に自動チェック
+  - pre-commit: TypeScript型チェック、ESLint、Stylelint、Prettier（キャッシュ有効）
+  - commit-msg: Conventional Commits形式の検証
+  - prepare-commit-msg: ブランチ名からプレフィックス自動追加
 
 ### 利用可能なスクリプト
 
