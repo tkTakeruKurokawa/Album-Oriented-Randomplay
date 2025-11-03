@@ -1,10 +1,12 @@
 # Dependencies
 node_modules/
 .pnpm-store/
+.yarn/
 
 # Next.js
 .next/
 out/
+next-env.d.ts
 
 # Build outputs
 build/
@@ -13,10 +15,17 @@ storybook-static/
 
 # Coverage reports
 coverage/
+.nyc_output/
+
+# Test outputs
+__snapshots__/
 
 # IDE/Editor files
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 
 # Lock files
 package-lock.json
@@ -25,13 +34,44 @@ pnpm-lock.yaml
 
 # Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
 
 # Environment files
-.env*
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
 
 # Git
 .git/
+.gitignore
 
 # OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Public assets that shouldn't be formatted
+public/mockServiceWorker.js
+public/robots.txt
+public/sitemap.xml
+
+# Generated files
+*.generated.*
+*.config.d.ts
+
