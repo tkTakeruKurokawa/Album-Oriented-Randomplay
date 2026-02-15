@@ -13,104 +13,129 @@ const Logo = () => {
       viewBox="0 0 512 512"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
     >
-      {/* 背景のダークグレー円 */}
-      <circle cx="256" cy="256" r="250" fill="#333330" />
+      <defs>
+        <radialGradient
+          id="bgGrad"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(256 220) rotate(90) scale(260)"
+        >
+          <stop offset="0" stopColor="#515151" />
+          <stop offset="0.55" stopColor="#363636" />
+          <stop offset="1" stopColor="#252525" />
+        </radialGradient>
+        <radialGradient
+          id="vinylGlow"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(8 12) rotate(90) scale(96)"
+        >
+          <stop offset="0" stopColor="#222" />
+          <stop offset="1" stopColor="#111" />
+        </radialGradient>
+        <linearGradient
+          id="frontCardGrad"
+          x1="-104"
+          y1="-100"
+          x2="88"
+          y2="96"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0" stopColor="#5A5D5B" />
+          <stop offset="1" stopColor="#4A4D4B" />
+        </linearGradient>
+      </defs>
 
-      {/* ロゴユニット全体のバランス調整 */}
-      <g transform="translate(250, 256)">
-        {/* 1. 右側のレコード盤 (カードの背後に隠れる) */}
-        <g transform="translate(100, 0)">
-          <circle cx="0" cy="0" r="85" fill="#111" />
-          {/* レコードの溝: 明るさを上げ、不透明度を調整して視認性を向上 */}
-          {[75, 65, 55, 45, 35].map((r) => (
+      <circle cx="256" cy="256" r="248" fill="url(#bgGrad)" />
+
+      <g transform="translate(252,256)">
+        <g transform="translate(92,8)">
+          <circle cx="0" cy="0" r="84" fill="url(#vinylGlow)" />
+          {[73, 63, 53, 43, 33].map((r) => (
             <circle
               key={r}
               cx="0"
               cy="0"
               r={r}
               fill="none"
-              stroke="#444"
-              strokeWidth="1.8"
-              opacity="0.8"
+              stroke="#4E5150"
+              strokeWidth="2"
+              opacity="0.82"
             />
           ))}
-          {/* 中心部 */}
-          <circle cx="0" cy="0" r="15" fill="#333" />
-          <circle cx="0" cy="0" r="5" fill="#111" />
+          <circle cx="0" cy="0" r="20" fill="#8A8D8B" opacity="0.55" />
+          <circle cx="0" cy="0" r="9" fill="#262827" />
         </g>
 
-        {/* 2. 背面のアルバムケース群（色を明るく調整） */}
-        {/* 最背面: 色を #1A1A1A から #2A2A28 に明るく変更 */}
         <rect
-          x="-135"
-          y="-100"
-          width="200"
-          height="200"
-          rx="6"
-          fill="#2A2A28"
-          transform="rotate(-4, -135, 0)"
+          x="-146"
+          y="-106"
+          width="204"
+          height="212"
+          rx="10"
+          fill="#171A19"
+          opacity="0.82"
+          transform="rotate(-6, -146, 0)"
         />
-        {/* 中間面: 色を #262624 から #363633 に明るく変更 */}
         <rect
-          x="-120"
-          y="-100"
-          width="200"
-          height="200"
-          rx="6"
-          fill="#363633"
-          transform="rotate(-2, -120, 0)"
-        />
-
-        {/* 3. メインの前面カード */}
-        <rect
-          x="-105"
-          y="-100"
-          width="200"
-          height="200"
-          rx="6"
-          fill="#444440"
+          x="-129"
+          y="-106"
+          width="204"
+          height="212"
+          rx="10"
+          fill="#262927"
+          opacity="0.88"
+          transform="rotate(-3, -129, 0)"
         />
 
-        {/* 4. シャッフルアイコン (前面カードの中央に配置) */}
-        <g transform="translate(-5, 0) scale(0.95)">
-          <g transform="translate(-75, -75)">
-            {/* 下から上への矢印 */}
-            <path
-              d="M20 110 C 60 110, 90 40, 130 40"
-              stroke="#4ADE80"
-              strokeWidth="18"
-              strokeLinecap="round"
-              fill="none"
-            />
-            {/* 上から下への矢印 */}
-            <path
-              d="M20 40 C 60 40, 90 110, 130 110"
-              stroke="#4ADE80"
-              strokeWidth="18"
-              strokeLinecap="round"
-              fill="none"
-            />
+        <rect
+          x="-112"
+          y="-106"
+          width="204"
+          height="212"
+          rx="12"
+          fill="url(#frontCardGrad)"
+        />
 
-            {/* 矢arrow先端 (右上) */}
-            <path
-              d="M108 25 L 135 40 L 108 55"
-              stroke="#4ADE80"
-              strokeWidth="18"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-            {/* 矢印の先端 (右下) */}
-            <path
-              d="M108 95 L 135 110 L 108 125"
-              stroke="#4ADE80"
-              strokeWidth="18"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-          </g>
+        <g transform="translate(-12,-4)">
+          <path
+            d="M-54 50 H -30 C -14 50 -6 30 4 18 C 14 6 24 -14 42 -14 H 66"
+            stroke="#77DE82"
+            strokeWidth="19"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+          />
+          <path
+            d="M-54 -14 H -30 C -14 -14 -6 6 4 18 C 14 30 24 50 42 50 H 66"
+            stroke="#77DE82"
+            strokeWidth="19"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+          />
+          <path
+            d="M45 -35 L 76 -14 L 45 7"
+            stroke="#77DE82"
+            strokeWidth="19"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+          />
+          <path
+            d="M45 29 L 76 50 L 45 71"
+            stroke="#77DE82"
+            strokeWidth="19"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+          />
         </g>
       </g>
     </svg>
@@ -165,7 +190,7 @@ function SearchParamsComponent({
 
 export default function SignIn() {
   return (
-    <div className="flex min-h-screen w-full items-center justify-center bg-black p-4">
+    <div className="flex h-screen w-full items-center justify-center">
       <Head>
         <title>アルバム指向ランダムプレイ - Spotifyログイン</title>
       </Head>
@@ -175,16 +200,16 @@ export default function SignIn() {
           <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#1e3a8a] via-[#7c2d12] to-[#4c1d95]">
             <div className="px-8 text-center">
               <div className="mb-8 flex items-center justify-center gap-3">
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#505050] p-3 shadow-2xl">
+                <div className="flex h-23 w-23 items-center justify-center rounded-full">
                   <Logo />
                 </div>
               </div>
 
-              <h1 className="mb-4 text-4xl font-bold text-white">
+              <h1 className="mb-4 text-4xl font-bold text-[var(--spotify-white)]">
                 Album Oriented Random-play
               </h1>
 
-              <p className="mx-auto mb-8 max-w-md text-lg text-white">
+              <p className="mx-auto mb-8 max-w-md text-lg text-[var(--spotify-light-gray)]">
                 アルバム単位でお気に入りの音楽をランダム再生。
                 <br />
                 アルバムに込められた世界観をそのままに。
@@ -194,14 +219,10 @@ export default function SignIn() {
                 onClick={() => {
                   void signIn('spotify', { callbackUrl });
                 }}
-                className="rounded-full bg-[var(--spotify-green)] px-12 py-4 text-lg font-semibold tracking-wide text-black transition-all hover:scale-105 hover:bg-[var(--spotify-green-hover)]"
+                className="rounded-full bg-[var(--spotify-green)] px-12 py-4 text-lg font-semibold tracking-wide text-[var(--spotify-black)] transition-all hover:scale-105 hover:bg-[var(--spotify-green-hover)]"
               >
                 Spotifyでログイン
               </button>
-
-              <p className="mt-6 text-xs text-white opacity-60">
-                このデモではモックデータを使用しています
-              </p>
             </div>
           </div>
         )}
