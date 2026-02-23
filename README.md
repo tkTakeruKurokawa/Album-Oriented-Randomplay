@@ -80,6 +80,97 @@
 - `pnpm storybook`: Storybookを起動
 - `pnpm build-storybook`: Storybookをビルド
 
+## プロジェクト構造
+
+```
+src/
+├── app/                           # Next.js App Router
+│   ├── api/                       # API Routes
+│   │   └── auth/                  # NextAuth.js認証エンドポイント
+│   ├── auth/
+│   │   └── signin/
+│   │       └── page.tsx           # サインインページ
+│   ├── dashboard/
+│   │   └── page.tsx               # ダッシュボードページ
+│   ├── layout.tsx                 # ルートレイアウト
+│   └── page.tsx                   # ホームページ
+│
+├── components/
+│   ├── Pages/                     # ページコンポーネント
+│   │   ├── Home/
+│   │   │   └── Home.tsx
+│   │   ├── SignIn/
+│   │   │   ├── SignIn.tsx
+│   │   │   ├── Logo.tsx
+│   │   │   └── components/
+│   │   └── Dashboard/
+│   │       ├── Dashboard.tsx
+│   │       ├── components/        # ページ固有のコンポーネント
+│   │       └── providers/         # ページ固有のProvider
+│   │
+│   ├── ui/                        # 共用UIコンポーネント
+│   ├── error/
+│   │   └── ErrorBoundary.tsx      # エラーハンドリング
+│   ├── AlbumCard.tsx              # アルバムカードコンポーネント
+│   └── ...
+│
+├── lib/
+│   ├── app-providers/             # グローバルProvider
+│   │   ├── AuthProvider.tsx       # NextAuth.jsのSessionProvider
+│   │   ├── AuthProvider.stories.tsx
+│   │   └── index.ts
+│   ├── api/
+│   │   ├── spotify.ts             # Spotify API実装
+│   │   └── SpotifyService.ts      # Spotifyサービス
+│   ├── placeholder.ts
+│   └── ...
+│
+├── mocks/                         # MSWモック設定
+│   ├── server.ts                  # Node.js環境用モック
+│   ├── browser.ts                 # ブラウザ環境用モック
+│   └── handlers.ts                # API ハンドラー定義
+│
+├── test/
+│   ├── setup.ts                   # テスト環境設定
+│   └── utils.ts                   # テストユーティリティ
+│
+├── types/
+│   ├── spotify/                   # Spotify API型定義
+│   └── ...
+│
+├── styles/
+│   ├── globals.css                # グローバルスタイル
+│   ├── Home.module.css
+│   └── AlbumCard.module.css
+│
+└── ...
+```
+
+### ディレクトリ構成の説明
+
+#### `app/`
+
+- **ルーティージェント**: Next.js App Routerによるガイド構造
+- **ページファイル**: 可能な限りシンプルに保つ（呼び出しのみ）
+
+#### `components/Pages/`
+
+- **ページコンポーネント**: 各ページの本体ロジックを集約
+- **内部構造**:
+  - `{PageName}.tsx`: ページのメインコンポーネント
+  - `components/`: ページ固有のサブコンポーネント
+  - `providers/`: ページ固有のProvider（複数ページで共用しないもの）
+
+#### `lib/app-providers/`
+
+- **グローバルProvider**: アプリケーション全体で使用するProvider
+- 現在: `AuthProvider` (NextAuth.js)
+- 将来: ThemeProvider等を追加予定
+
+#### `lib/api/`
+
+- **API通信**: 外部API(Spotify等)との通信実装
+
 ## テスト
 
 このプロジェクトではVitestとReact Testing Libraryを使用してテストを実装しています。
