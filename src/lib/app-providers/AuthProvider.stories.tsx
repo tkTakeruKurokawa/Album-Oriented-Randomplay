@@ -1,10 +1,10 @@
-import NextAuthProvider from './SessionProvider';
+import { AuthProvider } from './AuthProvider';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
-  title: 'Providers/NextAuthProvider',
-  component: NextAuthProvider,
+  title: 'Providers/AuthProvider',
+  component: AuthProvider,
   parameters: {
     layout: 'centered',
     docs: {
@@ -15,7 +15,7 @@ const meta = {
     },
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof NextAuthProvider>;
+} satisfies Meta<typeof AuthProvider>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -27,7 +27,7 @@ export const Default: Story = {
       <div className="rounded-lg border border-gray-300 p-4">
         <h3 className="mb-2 text-lg font-semibold">認証されたコンテンツ</h3>
         <p className="text-gray-600">
-          このコンテンツはNextAuthProviderでラップされており、認証状態にアクセスできます。
+          このコンテンツはAuthProviderでラップされており、認証状態にアクセスできます。
         </p>
       </div>
     ),
