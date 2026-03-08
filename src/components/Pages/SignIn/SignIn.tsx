@@ -22,17 +22,14 @@ export const SignInPage = () => {
 
   return (
     <main className="flex h-screen w-full items-center justify-center bg-gradient-to-br from-[#1e3a8a] via-[#7c2d12] to-[#4c1d95]">
-      <section className="px-8 text-center" aria-labelledby="signin-heading">
+      <section className="px-8 text-center">
         <header className="mb-8 flex items-center justify-center gap-3">
           <div className="flex h-23 w-23 items-center justify-center rounded-full">
             <Logo />
           </div>
         </header>
 
-        <h1
-          id="signin-heading"
-          className="mb-4 text-4xl font-bold text-[var(--spotify-white)]"
-        >
+        <h1 className="mb-4 text-4xl font-bold text-[var(--spotify-white)]">
           Album Oriented Random-play
         </h1>
 
