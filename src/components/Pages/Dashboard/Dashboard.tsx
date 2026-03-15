@@ -168,12 +168,6 @@ export function DashboardPage({
                       height={300}
                       className="aspect-square w-full rounded-md object-cover shadow-lg"
                     />
-                    <span
-                      className="absolute right-2 bottom-2 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-[var(--spotify-green)] opacity-0 shadow-xl transition-all group-hover:translate-y-0 group-hover:opacity-100"
-                      aria-hidden="true"
-                    >
-                      <Shuffle size={20} className="text-black" />
-                    </span>
                   </span>
                   <span className="mb-1 block truncate text-xs sm:text-sm">
                     {album.name}
