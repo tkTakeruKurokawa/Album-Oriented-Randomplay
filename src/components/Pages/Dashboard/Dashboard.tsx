@@ -2,6 +2,7 @@
 
 import { Album, Heart, User, Shuffle } from 'lucide-react';
 import Image from 'next/image';
+import { useId } from 'react';
 
 import { mockAlbums, mockArtists } from './MockData';
 
@@ -20,6 +21,9 @@ export function DashboardPage({
   onNavigateToAlbum,
   onNavigateToArtist,
 }: DashboardPageProps) {
+  const favoriteAlbumsId = useId();
+  const favoriteArtistsId = useId();
+
   const handlePlayAlbums = () => {
     // アルバムとEPのみを対象にする（シングルを除外）
     const albumsAndEPs = mockAlbums.filter(
@@ -69,7 +73,7 @@ export function DashboardPage({
           {/* お気に入りアルバムカード */}
           <button
             type="button"
-            className="group cursor-pointer rounded-xl bg-gradient-to-br from-purple-900/40 to-blue-900/40 p-6 text-left transition-all hover:from-purple-900/50 hover:to-blue-900/50 active:scale-[0.98] lg:rounded-2xl lg:p-8"
+            className="group cursor-pointer rounded-xl bg-gradient-to-br from-purple-900/40 to-blue-900/40 p-6 text-left transition-all hover:from-purple-900/50 hover:to-blue-900/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-[0.98] lg:rounded-2xl lg:p-8"
             onClick={handlePlayAlbums}
           >
             <span className="mb-4 flex items-start justify-between lg:mb-6">
@@ -88,9 +92,9 @@ export function DashboardPage({
               </span>
             </span>
 
-            <span className="mb-2 block text-xl lg:mb-3 lg:text-3xl">
+            <h2 className="mb-2 block text-xl lg:mb-3 lg:text-3xl">
               お気に入りアルバム
-            </span>
+            </h2>
             <span className="mb-4 block text-sm lg:mb-6 lg:text-base">
               保存したアルバムをランダムに再生します
             </span>
@@ -108,7 +112,7 @@ export function DashboardPage({
           {/* お気に入りアーティストカード */}
           <button
             type="button"
-            className="group cursor-pointer rounded-xl bg-gradient-to-br from-green-900/40 to-emerald-900/40 p-6 text-left transition-all hover:from-green-900/50 hover:to-emerald-900/50 active:scale-[0.98] lg:rounded-2xl lg:p-8"
+            className="group cursor-pointer rounded-xl bg-gradient-to-br from-green-900/40 to-emerald-900/40 p-6 text-left transition-all hover:from-green-900/50 hover:to-emerald-900/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-[0.98] lg:rounded-2xl lg:p-8"
             onClick={handlePlayArtists}
           >
             <span className="mb-4 flex items-start justify-between lg:mb-6">
@@ -127,9 +131,9 @@ export function DashboardPage({
               </span>
             </span>
 
-            <span className="mb-2 block text-xl lg:mb-3 lg:text-3xl">
+            <h2 className="mb-2 block text-xl lg:mb-3 lg:text-3xl">
               お気に入りアーティスト
-            </span>
+            </h2>
             <span className="mb-4 block text-sm lg:mb-6 lg:text-base">
               フォローしているアーティストのアルバムをランダムに再生します
             </span>
@@ -146,8 +150,11 @@ export function DashboardPage({
         </div>
 
         {/* お気に入りアルバムプレビュー */}
-        <section className="mb-8" aria-labelledby="albums-heading">
-          <h2 id="albums-heading" className="mb-4 text-xl lg:mb-6 lg:text-3xl">
+        <section className="mb-8" aria-labelledby={favoriteAlbumsId}>
+          <h2
+            id={favoriteAlbumsId}
+            className="mb-4 text-xl lg:mb-6 lg:text-3xl"
+          >
             お気に入りアルバム
           </h2>
           <ul className="grid list-none grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 xl:grid-cols-6">
@@ -158,12 +165,12 @@ export function DashboardPage({
                   onClick={() => {
                     onNavigateToAlbum?.(album.id);
                   }}
-                  className="group w-full cursor-pointer rounded-lg bg-[var(--spotify-darker)] p-3 text-left transition-all hover:bg-[var(--spotify-gray)] active:scale-95 sm:p-4"
+                  className="group w-full cursor-pointer rounded-lg bg-[var(--spotify-darker)] p-3 text-left transition-all hover:bg-[var(--spotify-gray)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-95 sm:p-4"
                 >
                   <span className="relative mb-3 block sm:mb-4">
                     <Image
                       src={album.coverUrl}
-                      alt={album.name}
+                      alt=""
                       width={300}
                       height={300}
                       className="aspect-square w-full rounded-md object-cover shadow-lg"
@@ -180,8 +187,11 @@ export function DashboardPage({
         </section>
 
         {/* お気に入りアーティストプレビュー */}
-        <section className="pb-4" aria-labelledby="artists-heading">
-          <h2 id="artists-heading" className="mb-4 text-xl lg:mb-6 lg:text-3xl">
+        <section className="pb-4" aria-labelledby={favoriteArtistsId}>
+          <h2
+            id={favoriteArtistsId}
+            className="mb-4 text-xl lg:mb-6 lg:text-3xl"
+          >
             お気に入りアーティスト
           </h2>
           <ul className="grid list-none grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 xl:grid-cols-6">
@@ -192,22 +202,19 @@ export function DashboardPage({
                   onClick={() => {
                     onNavigateToArtist?.(artist.id);
                   }}
-                  className="group w-full cursor-pointer rounded-lg bg-[var(--spotify-darker)] p-3 text-left transition-all hover:bg-[var(--spotify-gray)] active:scale-95 sm:p-4"
+                  className="group w-full cursor-pointer rounded-lg bg-[var(--spotify-darker)] p-3 text-left transition-all hover:bg-[var(--spotify-gray)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-95 sm:p-4"
                 >
                   <span className="relative mb-3 block sm:mb-4">
                     <Image
                       src={artist.imageUrl}
-                      alt={artist.name}
                       width={300}
                       height={300}
                       className="aspect-square w-full rounded-full object-cover shadow-lg"
+                      alt=""
                     />
                   </span>
                   <span className="mb-1 block truncate text-center text-xs sm:text-sm">
                     {artist.name}
-                  </span>
-                  <span className="block text-center text-xs">
-                    アーティスト
                   </span>
                 </button>
               </li>

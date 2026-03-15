@@ -99,12 +99,10 @@ button {
   border: none;
   cursor: pointer;
   font-family: inherit;
-  outline: none;
 }
 
 input {
   font-family: inherit;
-  outline: none;
 }
 
 a {
