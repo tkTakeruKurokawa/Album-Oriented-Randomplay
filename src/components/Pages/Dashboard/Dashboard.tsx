@@ -50,7 +50,7 @@ export function DashboardPage({
   return (
     <main className="flex-1 overflow-auto bg-gradient-to-b from-[#1a1a1a] to-[var(--spotify-dark)]">
       {/* モバイルヘッダー */}
-      <header className="sticky top-0 z-10 bg-black p-4 lg:hidden">
+      <header className="sticky top-0 z-10 bg-black p-4">
         <div className="flex items-center gap-2">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#282828] p-1.5">
             <Logo />
