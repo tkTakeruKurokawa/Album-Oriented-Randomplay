@@ -8,8 +8,6 @@ import { mockAlbums, mockArtists } from './MockData';
 
 import type { Album as AlbumType } from './MockData';
 
-import { Logo } from '@/components/Pages/SignIn/Logo';
-
 interface DashboardPageProps {
   onStartPlayback?: (albums: AlbumType[], mode: 'albums' | 'artists') => void;
   onNavigateToAlbum?: (albumId: string) => void;
@@ -49,16 +47,6 @@ export function DashboardPage({
 
   return (
     <main className="flex-1 overflow-auto bg-gradient-to-b from-[#1a1a1a] to-[var(--spotify-dark)]">
-      {/* モバイルヘッダー */}
-      <header className="sticky top-0 z-10 bg-black p-4">
-        <div className="flex items-center gap-2">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#282828] p-1.5">
-            <Logo />
-          </div>
-          <span className="tracking-tight">Album Random Play</span>
-        </div>
-      </header>
-
       <div className="p-4 sm:p-6 lg:p-8">
         <div className="mb-8 lg:mb-12">
           <h1 className="mb-2 text-3xl lg:mb-3 lg:text-5xl">
