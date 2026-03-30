@@ -1,0 +1,16 @@
+import Link from 'next/link';
+
+import { Logo } from '@/components/ui/Logo';
+
+export function Header() {
+  return (
+    <header className="sticky top-0 z-10 bg-black p-4">
+      <Link href="/dashboard" className="flex w-fit items-center gap-2">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#282828] p-1.5">
+          <Logo />
+        </div>
+        <span className="tracking-tight">Album Random Play</span>
+      </Link>
+    </header>
+  );
+}
