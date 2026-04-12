@@ -1,6 +1,6 @@
 import { AxiosError, AxiosResponse } from 'axios';
 
-import spotifyApi from './spotify';
+import { spotifyApi } from './spotify';
 
 import { SpotifyAlbumsResponse } from '@/types/spotify/albums';
 

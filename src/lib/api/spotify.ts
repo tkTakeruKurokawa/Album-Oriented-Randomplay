@@ -10,7 +10,7 @@ interface ExtendedAxiosRequestConfig extends InternalAxiosRequestConfig {
 const SPOTIFY_API_BASE_URL = 'https://api.spotify.com/v1';
 
 // Axiosインスタンスの作成
-const spotifyApi = axios.create({
+export const spotifyApi = axios.create({
   baseURL: SPOTIFY_API_BASE_URL,
   timeout: 10_000, // 10秒でタイムアウト
   headers: {
@@ -61,5 +61,3 @@ spotifyApi.interceptors.response.use(
     throw new Error(`Response error: ${error.message}`);
   }
 );
-
-export default spotifyApi;
