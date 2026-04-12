@@ -19,7 +19,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     /* パスエイリアス設定 */
-    "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]
     },
