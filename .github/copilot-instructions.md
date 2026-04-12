@@ -128,6 +128,8 @@ src/
 - **ESLint**: Next.js推奨 + TypeScript + React Hooks + アクセシビリティ
 - **コミット**: Conventional Commits規約に従う
 - **パスエイリアス**: `@/*` で `./src/*` にマッピング
+- **barrelパターン**: `components/` 配下の各ディレクトリには `index.ts`
+  を配置し、外部からのimportはbarrelファイル経由で行う（例: `@/components/ui` から import）
 - **Git Hooks**: Huskyとlint-stagedでコミット前に自動チェック
   - pre-commit: TypeScript型チェック、ESLint、Stylelint、Prettier（キャッシュ有効）
   - commit-msg: Conventional Commits形式の検証
