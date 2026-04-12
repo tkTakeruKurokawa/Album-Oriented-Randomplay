@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { Logo } from '@/components/ui/Logo';
 
-export function Header() {
+export const Header = () => {
   return (
     <header className="sticky top-0 z-10 bg-black p-4">
       <Link href="/dashboard" className="flex w-fit items-center gap-2">
@@ -13,4 +13,4 @@ export function Header() {
       </Link>
     </header>
   );
-}
+};

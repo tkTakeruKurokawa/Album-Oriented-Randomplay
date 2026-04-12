@@ -4,7 +4,9 @@ interface AlbumDetailRouteProps {
   params: Promise<{ id: string }>;
 }
 
-export default async function Page({ params }: AlbumDetailRouteProps) {
+const Page = async ({ params }: AlbumDetailRouteProps) => {
   const { id } = await params;
   return <AlbumDetailPage albumId={id} />;
-}
+};
+
+export default Page;

@@ -22,9 +22,9 @@ interface SvgPlaceholderOptions {
  * @param options - プレースホルダーの見た目を設定するオプション
  * @returns SVGのData URI文字列
  */
-export function generateSvgPlaceholder(
+export const generateSvgPlaceholder = (
   options: SvgPlaceholderOptions = {}
-): string {
+): string => {
   // ライブラリを直接呼び出し、Data URIとして取得
   return simpleSvgPlaceholder({ ...options, dataUri: true });
-}
+};

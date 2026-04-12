@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import { DashboardPage } from '@/components/Pages/Dashboard/Dashboard';
 
-export default function Page() {
+const Page = () => {
   const router = useRouter();
 
   return (
@@ -14,4 +14,6 @@ export default function Page() {
       }}
     />
   );
-}
+};
+
+export default Page;

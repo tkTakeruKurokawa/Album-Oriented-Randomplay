@@ -14,11 +14,11 @@ interface DashboardPageProps {
   onNavigateToArtist?: (artistId: string) => void;
 }
 
-export function DashboardPage({
+export const DashboardPage = ({
   onStartPlayback,
   onNavigateToAlbum,
   onNavigateToArtist,
-}: DashboardPageProps) {
+}: DashboardPageProps) => {
   const favoriteAlbumsId = useId();
   const favoriteArtistsId = useId();
 
@@ -212,4 +212,4 @@ export function DashboardPage({
       </div>
     </main>
   );
-}
+};

@@ -27,7 +27,7 @@ export interface Artist {
   albums: Album[];
 }
 
-function albumCover(text: string, bgColor: string): string {
+const albumCover = (text: string, bgColor: string): string => {
   return generateSvgPlaceholder({
     width: 300,
     height: 300,
@@ -36,9 +36,9 @@ function albumCover(text: string, bgColor: string): string {
     textColor: '#fff',
     fontSize: 18,
   });
-}
+};
 
-function artistImage(text: string, bgColor: string): string {
+const artistImage = (text: string, bgColor: string): string => {
   return generateSvgPlaceholder({
     width: 300,
     height: 300,
@@ -47,9 +47,9 @@ function artistImage(text: string, bgColor: string): string {
     textColor: '#fff',
     fontSize: 16,
   });
-}
+};
 
-function generateMockTracks(albumId: string, count: number): Track[] {
+const generateMockTracks = (albumId: string, count: number): Track[] => {
   const trackNames = [
     'Opening',
     'Rhythm & Flow',
@@ -70,11 +70,11 @@ function generateMockTracks(albumId: string, count: number): Track[] {
     trackNumber: i + 1,
     duration: 180 + Math.floor(i * 23.7),
   }));
-}
+};
 
-function calcTotalDuration(tracks: Track[]): number {
+const calcTotalDuration = (tracks: Track[]): number => {
   return tracks.reduce((sum, t) => sum + t.duration, 0);
-}
+};
 
 const album1Tracks = generateMockTracks('album-1', 10);
 const album2Tracks = generateMockTracks('album-2', 8);

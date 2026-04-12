@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import styles from '@/styles/Home.module.css';
 
-export function HomePage() {
+export const HomePage = () => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -27,4 +27,4 @@ export function HomePage() {
       </footer>
     </div>
   );
-}
+};

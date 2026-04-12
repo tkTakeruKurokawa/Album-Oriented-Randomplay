@@ -6,7 +6,7 @@ import { handlers } from './handlers';
 export const worker = setupWorker(...handlers);
 
 // この関数を開発環境で呼び出してモックを有効化
-export function initMocks(): void {
+export const initMocks = (): void => {
   if (process.env.NODE_ENV === 'development') {
     worker
       .start({
@@ -16,4 +16,4 @@ export function initMocks(): void {
 
     console.log('[MSW] Mock Service Worker起動しました');
   }
-}
+};

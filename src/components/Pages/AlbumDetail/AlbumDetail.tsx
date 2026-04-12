@@ -14,13 +14,13 @@ interface AlbumDetailPageProps {
   albumId: string;
 }
 
-function formatTime(seconds: number): string {
+const formatTime = (seconds: number): string => {
   const mins = Math.floor(seconds / 60);
   const secs = Math.floor(seconds % 60);
   return `${String(mins)}:${String(secs).padStart(2, '0')}`;
-}
+};
 
-function getAlbumTypeLabel(type: Album['type']): string {
+const getAlbumTypeLabel = (type: Album['type']): string => {
   switch (type) {
     case 'single': {
       return 'シングル';
@@ -32,7 +32,7 @@ function getAlbumTypeLabel(type: Album['type']): string {
       return 'アルバム';
     }
   }
-}
+};
 
 export const AlbumDetailPage = ({ albumId }: AlbumDetailPageProps) => {
   const router = useRouter();
