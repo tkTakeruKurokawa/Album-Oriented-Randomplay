@@ -2,7 +2,7 @@ import { Inter } from 'next/font/google';
 
 import type { Metadata } from 'next';
 
-import ErrorBoundary from '@/components/error/ErrorBoundary';
+import { ErrorBoundary } from '@/components/error';
 import { AuthProvider } from '@/lib/app-providers';
 
 import '@/styles/globals.css';

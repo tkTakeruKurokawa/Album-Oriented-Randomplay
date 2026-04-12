@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { DashboardPage } from '@/components/Pages/Dashboard/Dashboard';
+import { DashboardPage } from '@/components/Pages/Dashboard';
 
 const Page = () => {
   const router = useRouter();

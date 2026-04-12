@@ -6,9 +6,9 @@ import { useRouter } from 'next/navigation';
 
 import { AlbumNotFound } from './AlbumNotFound';
 
-import type { Album } from '@/components/Pages/Dashboard/MockData';
+import type { Album } from '@/components/Pages/Dashboard';
 
-import { mockAlbums } from '@/components/Pages/Dashboard/MockData';
+import { mockAlbums } from '@/components/Pages/Dashboard';
 
 interface AlbumDetailPageProps {
   albumId: string;

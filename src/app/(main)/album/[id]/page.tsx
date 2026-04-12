@@ -1,4 +1,4 @@
-import { AlbumDetailPage } from '@/components/Pages/AlbumDetail/AlbumDetail';
+import { AlbumDetailPage } from '@/components/Pages/AlbumDetail';
 
 interface AlbumDetailRouteProps {
   params: Promise<{ id: string }>;

@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useSession, signIn } from 'next-auth/react';
 import { useEffect } from 'react';
 
-import { Logo } from '@/components/ui/Logo';
+import { Logo } from '@/components/ui';
 
 export const SignInPage = () => {
   const router = useRouter();

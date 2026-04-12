@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { SignInPage } from '@/components/Pages/SignIn/SignIn';
+import { SignInPage } from '@/components/Pages/SignIn';
 
 export const metadata: Metadata = {
   title: 'ログイン | アルバム指向ランダムプレイ',

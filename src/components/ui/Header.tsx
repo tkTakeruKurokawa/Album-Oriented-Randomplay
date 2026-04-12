@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Logo } from '@/components/ui/Logo';
+import { Logo } from '@/components/ui';
 
 export const Header = () => {
   return (
