@@ -3,6 +3,7 @@
 import { Play, Heart } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 import { AlbumNotFound } from './AlbumNotFound';
 
@@ -37,6 +38,10 @@ const getAlbumTypeLabel = (type: Album['type']): string => {
 export const AlbumDetailPage = ({ albumId }: AlbumDetailPageProps) => {
   const router = useRouter();
   const album = mockAlbums.find((a) => a.id === albumId);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [albumId]);
 
   if (!album) {
     return <AlbumNotFound />;
