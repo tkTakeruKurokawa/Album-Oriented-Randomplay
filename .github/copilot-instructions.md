@@ -125,6 +125,9 @@ src/
 
 - **TypeScript**: 厳格な型チェック有効 (`strict: true`, `noImplicitAny: true`)
 - **関数定義**: `function` 宣言は使用せず、`const fn = () => {}` のアロー関数式で統一する
+- **export**: `export default` は使用せず、`export const`
+  などの名前付きエクスポートで統一する（Next.jsの `page.tsx` / `layout.tsx`、StorybookのCSF形式の
+  `meta`、モジュールエイリアス用モックなどフレームワークが要求する場合を除く）
 - **ESLint**: Next.js推奨 + TypeScript + React Hooks + アクセシビリティ
 - **コミット**: Conventional Commits規約に従う
 - **パスエイリアス**: `@/*` で `./src/*` にマッピング
