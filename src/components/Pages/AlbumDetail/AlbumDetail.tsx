@@ -2,7 +2,7 @@
 
 import { Play, Heart } from 'lucide-react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useEffect } from 'react';
 
 import { AlbumNotFound } from './AlbumNotFound';
@@ -36,7 +36,6 @@ const getAlbumTypeLabel = (type: Album['type']): string => {
 };
 
 export const AlbumDetailPage = ({ albumId }: AlbumDetailPageProps) => {
-  const router = useRouter();
   const album = mockAlbums.find((a) => a.id === albumId);
 
   useEffect(() => {
@@ -73,15 +72,12 @@ export const AlbumDetailPage = ({ albumId }: AlbumDetailPageProps) => {
             </h1>
 
             <div className="mb-4 flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => {
-                  router.push(`/artist/${String(album.artistId)}`);
-                }}
+              <Link
+                href={`/artist/${album.artistId}`}
                 className="hover:underline"
               >
                 {album.artist}
-              </button>
+              </Link>
             </div>
 
             <div className="flex items-center gap-2 text-sm text-[var(--spotify-light-gray)]">

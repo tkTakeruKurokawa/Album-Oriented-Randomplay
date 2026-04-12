@@ -1,21 +1,16 @@
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export const AlbumNotFound = () => {
-  const router = useRouter();
-
   return (
     <main className="flex min-h-screen items-center justify-center bg-[var(--spotify-dark)]">
       <div className="text-center">
         <h1 className="mb-4 text-2xl">アルバムが見つかりません</h1>
-        <button
-          type="button"
-          onClick={() => {
-            router.push('/dashboard');
-          }}
+        <Link
+          href="/dashboard"
           className="text-[var(--spotify-green)] hover:underline"
         >
           ダッシュボードに戻る
-        </button>
+        </Link>
       </div>
     </main>
   );

@@ -10,15 +10,9 @@ import type { Album as AlbumType } from './MockData';
 
 interface DashboardPageProps {
   onStartPlayback?: (albums: AlbumType[], mode: 'albums' | 'artists') => void;
-  onNavigateToAlbum?: (albumId: string) => void;
-  onNavigateToArtist?: (artistId: string) => void;
 }
 
-export const DashboardPage = ({
-  onStartPlayback,
-  onNavigateToAlbum,
-  onNavigateToArtist,
-}: DashboardPageProps) => {
+export const DashboardPage = ({ onStartPlayback }: DashboardPageProps) => {
   const favoriteAlbumsId = useId();
   const favoriteArtistsId = useId();
 
@@ -80,16 +74,8 @@ export const DashboardPage = ({
           />
         </div>
 
-        <AlbumGrid
-          albums={mockAlbums}
-          headingId={favoriteAlbumsId}
-          onNavigateToAlbum={onNavigateToAlbum}
-        />
-        <ArtistGrid
-          artists={mockArtists}
-          headingId={favoriteArtistsId}
-          onNavigateToArtist={onNavigateToArtist}
-        />
+        <AlbumGrid albums={mockAlbums} headingId={favoriteAlbumsId} />
+        <ArtistGrid artists={mockArtists} headingId={favoriteArtistsId} />
       </div>
     </main>
   );
