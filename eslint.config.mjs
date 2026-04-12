@@ -155,6 +155,9 @@ export default tseslint.config(
       },
     },
     rules: {
+      // 関数定義はアロー関数式で統一
+      'func-style': ['error', 'expression'],
+
       // TypeScript unsafe系ルールを個別に無効化
       '@typescript-eslint/no-unsafe-argument': 'off',
       '@typescript-eslint/no-unsafe-assignment': 'off',

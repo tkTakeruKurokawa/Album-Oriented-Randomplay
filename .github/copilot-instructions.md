@@ -124,6 +124,7 @@ src/
 ### コーディング規約
 
 - **TypeScript**: 厳格な型チェック有効 (`strict: true`, `noImplicitAny: true`)
+- **関数定義**: `function` 宣言は使用せず、`const fn = () => {}` のアロー関数式で統一する
 - **ESLint**: Next.js推奨 + TypeScript + React Hooks + アクセシビリティ
 - **コミット**: Conventional Commits規約に従う
 - **パスエイリアス**: `@/*` で `./src/*` にマッピング
