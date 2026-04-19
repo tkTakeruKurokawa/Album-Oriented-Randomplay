@@ -8,6 +8,8 @@ import { AlbumGrid, ArtistGrid, PlaybackCard } from './parts';
 
 import type { Album as AlbumType } from './MockData';
 
+import { PageHeader } from '@/components/ui';
+
 interface DashboardPageProps {
   onStartPlayback?: (albums: AlbumType[], mode: 'albums' | 'artists') => void;
 }
@@ -42,14 +44,10 @@ export const DashboardPage = ({ onStartPlayback }: DashboardPageProps) => {
   return (
     <main className="flex-1 overflow-auto bg-gradient-to-b from-[#1a1a1a] to-[var(--spotify-dark)]">
       <div className="p-4 sm:p-6 lg:p-8">
-        <div className="mb-8 lg:mb-12">
-          <h1 className="mb-2 text-3xl lg:mb-3 lg:text-5xl">
-            アルバムランダム再生
-          </h1>
-          <p className="text-sm text-[var(--spotify-light-gray)] lg:text-base">
-            アルバム単位で音楽をランダムに楽しもう
-          </p>
-        </div>
+        <PageHeader
+          title="アルバムランダム再生"
+          subtitle="アルバム単位で音楽をランダムに楽しもう"
+        />
 
         <div className="mb-8 grid grid-cols-1 gap-4 sm:gap-6 lg:mb-12">
           <PlaybackCard

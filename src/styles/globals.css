@@ -49,6 +49,14 @@
   .border-spotify-green {
     border-color: var(--spotify-green);
   }
+
+  .focus-ring {
+    &:focus-visible {
+      outline-color: var(--spotify-white);
+      outline-offset: 2px;
+      outline-width: 2px;
+    }
+  }
 }
 
 * {
@@ -124,5 +132,5 @@ a {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3e3e3e;
+  background: var(--spotify-light-gray);
 }

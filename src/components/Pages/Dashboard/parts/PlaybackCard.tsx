@@ -1,6 +1,6 @@
-import { Shuffle } from 'lucide-react';
-
 import type { LucideIcon } from 'lucide-react';
+
+import { ShuffleButton } from '@/components/ui';
 
 interface PlaybackCardProps {
   icon: LucideIcon;
@@ -37,12 +37,7 @@ export const PlaybackCard = ({
           <Icon size={24} className="lg:hidden" />
           <Icon size={32} className="hidden lg:block" />
         </span>
-        <span
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--spotify-green)] opacity-100 shadow-lg transition-all active:scale-95 lg:opacity-0 lg:group-hover:opacity-100"
-          aria-hidden="true"
-        >
-          <Shuffle size={24} className="text-black" />
-        </span>
+        <ShuffleButton className="opacity-100 active:scale-95 lg:opacity-0 lg:group-hover:opacity-100" />
       </span>
 
       <h2 className="mb-2 block text-xl lg:mb-3 lg:text-3xl">{title}</h2>
