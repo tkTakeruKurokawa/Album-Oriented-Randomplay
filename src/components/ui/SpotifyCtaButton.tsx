@@ -3,7 +3,7 @@ import type { ComponentProps } from 'react';
 type ButtonVariant = 'primary' | 'ghost';
 type ButtonSize = 'sm' | 'md' | 'lg';
 
-interface ButtonProps extends ComponentProps<'button'> {
+interface SpotifyCtaButtonProps extends ComponentProps<'button'> {
   variant?: ButtonVariant;
   size?: ButtonSize;
 }
@@ -20,12 +20,12 @@ const sizeClasses: Record<ButtonSize, string> = {
   lg: 'px-12 py-4 text-lg',
 };
 
-export const Button = ({
+export const SpotifyCtaButton = ({
   variant = 'primary',
   size = 'md',
   className = '',
   ...props
-}: ButtonProps) => {
+}: SpotifyCtaButtonProps) => {
   return (
     <button
       type="button"

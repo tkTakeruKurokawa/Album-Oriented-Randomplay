@@ -1,9 +1,9 @@
-export { Button } from './Button';
+export { SpotifyCtaButton } from './SpotifyCtaButton';
 export { DetailHero } from './DetailHero';
 export { ErrorMessage } from './ErrorMessage';
 export { FavoriteButton } from './FavoriteButton';
 export { Grid } from './Grid';
-export { GridCard } from './GridCard';
+export { MediaCard } from './MediaCard';
 export { Header } from './Header';
 export { IconButton } from './IconButton';
 export { Logo } from './Logo';

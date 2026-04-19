@@ -1,6 +1,6 @@
 import type { Artist } from '../MockData';
 
-import { Grid, GridCard } from '@/components/ui';
+import { Grid, MediaCard } from '@/components/ui';
 
 interface ArtistGridProps {
   artists: Artist[];
@@ -15,7 +15,7 @@ export const ArtistGrid = ({ artists, headingId }: ArtistGridProps) => {
       </h2>
       <Grid>
         {artists.map((artist) => (
-          <GridCard
+          <MediaCard
             key={artist.id}
             href={`/artist/${artist.id}`}
             imageUrl={artist.imageUrl}

@@ -1,6 +1,6 @@
 import type { Album } from '../MockData';
 
-import { Grid, GridCard } from '@/components/ui';
+import { Grid, MediaCard } from '@/components/ui';
 
 interface AlbumGridProps {
   albums: Album[];
@@ -15,7 +15,7 @@ export const AlbumGrid = ({ albums, headingId }: AlbumGridProps) => {
       </h2>
       <Grid>
         {albums.map((album) => (
-          <GridCard
+          <MediaCard
             key={album.id}
             href={`/album/${album.id}`}
             imageUrl={album.coverUrl}

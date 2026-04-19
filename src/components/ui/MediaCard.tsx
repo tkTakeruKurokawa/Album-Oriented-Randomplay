@@ -1,33 +1,33 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-type GridCardVariant = 'album' | 'artist';
+type MediaCardVariant = 'album' | 'artist';
 
-interface GridCardProps {
+interface MediaCardProps {
   href: string;
   imageUrl: string;
-  variant?: GridCardVariant;
+  variant?: MediaCardVariant;
   title: string;
   subtitle?: string;
 }
 
-const imageClasses: Record<GridCardVariant, string> = {
+const imageClasses: Record<MediaCardVariant, string> = {
   album: 'aspect-square w-full rounded-md object-cover shadow-lg',
   artist: 'aspect-square w-full rounded-full object-cover shadow-lg',
 };
 
-const titleClasses: Record<GridCardVariant, string> = {
+const titleClasses: Record<MediaCardVariant, string> = {
   album: 'mb-1 block truncate text-xs sm:text-sm',
   artist: 'mb-1 block truncate text-center text-xs sm:text-sm',
 };
 
-export const GridCard = ({
+export const MediaCard = ({
   href,
   imageUrl,
   variant = 'album',
   title,
   subtitle,
-}: GridCardProps) => {
+}: MediaCardProps) => {
   return (
     <li>
       <Link

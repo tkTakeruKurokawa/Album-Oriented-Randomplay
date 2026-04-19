@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useSession, signIn } from 'next-auth/react';
 import { useEffect } from 'react';
 
-import { Button, Logo } from '@/components/ui';
+import { SpotifyCtaButton, Logo } from '@/components/ui';
 
 export const SignInPage = () => {
   const router = useRouter();
@@ -39,14 +39,14 @@ export const SignInPage = () => {
           アルバムに込められた世界観をそのままに。
         </p>
 
-        <Button
+        <SpotifyCtaButton
           size="lg"
           onClick={() => {
             void signIn('spotify', { callbackUrl: '/dashboard' });
           }}
         >
           Spotifyでログイン
-        </Button>
+        </SpotifyCtaButton>
       </section>
     </main>
   );
