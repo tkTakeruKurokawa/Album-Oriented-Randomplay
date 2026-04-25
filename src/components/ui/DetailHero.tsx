@@ -2,15 +2,24 @@ import Image from 'next/image';
 
 import type { ReactNode } from 'react';
 
+type DetailHeroVariant = 'album' | 'artist';
+
 interface DetailHeroProps {
   imageUrl: string;
   imageAlt: string;
+  variant?: DetailHeroVariant;
   children: ReactNode;
 }
+
+const imageShapeClasses: Record<DetailHeroVariant, string> = {
+  album: 'rounded-lg',
+  artist: 'rounded-full',
+};
 
 export const DetailHero = ({
   imageUrl,
   imageAlt,
+  variant = 'album',
   children,
 }: DetailHeroProps) => {
   return (
@@ -21,7 +30,7 @@ export const DetailHero = ({
           alt={imageAlt}
           width={300}
           height={300}
-          className="h-full w-full rounded-lg object-cover shadow-2xl"
+          className={`h-full w-full object-cover shadow-2xl ${imageShapeClasses[variant]}`}
         />
       </div>
 
