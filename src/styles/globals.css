@@ -11,6 +11,10 @@
   --spotify-light-gray: #b3b3b3;
   --spotify-white: #fff;
   --spotify-hover: #1a1a1a;
+
+  /* Detail page gradients */
+  --gradient-detail-from: #3d2a5c;
+  --gradient-detail-via: #1a1a2e;
 }
 
 @layer base {
@@ -134,5 +138,14 @@
       outline-offset: 2px;
       outline-width: 2px;
     }
+  }
+
+  .bg-gradient-detail {
+    background: linear-gradient(
+      to bottom,
+      var(--gradient-detail-from),
+      var(--gradient-detail-via),
+      var(--spotify-dark)
+    );
   }
 }

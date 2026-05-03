@@ -42,7 +42,7 @@ export const DashboardPage = ({ onStartPlayback }: DashboardPageProps) => {
   ).length;
 
   return (
-    <main className="flex-1 overflow-auto bg-gradient-to-b from-[#1a1a1a] to-[var(--spotify-dark)]">
+    <main className="bg-gradient-detail flex-1 overflow-auto">
       <div className="p-4 sm:p-6 lg:p-8">
         <PageHeader
           title="アルバムランダム再生"
