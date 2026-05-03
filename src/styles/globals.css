@@ -12,8 +12,10 @@
   --spotify-white: #fff;
   --spotify-hover: #1a1a1a;
 
-  /* Detail page gradients */
-  --gradient-detail-from: #3d2a5c;
+  /* Page gradients */
+  --gradient-dashboard-from: #1a1a1a;
+  --gradient-album-detail-from: #3d2a5c;
+  --gradient-artist-detail-from: #4a3d5c;
   --gradient-detail-via: #1a1a2e;
 }
 
@@ -140,10 +142,27 @@
     }
   }
 
-  .bg-gradient-detail {
+  .bg-gradient-dashboard {
     background: linear-gradient(
       to bottom,
-      var(--gradient-detail-from),
+      var(--gradient-dashboard-from),
+      var(--spotify-dark)
+    );
+  }
+
+  .bg-gradient-album-detail {
+    background: linear-gradient(
+      to bottom,
+      var(--gradient-album-detail-from),
+      var(--gradient-detail-via),
+      var(--spotify-dark)
+    );
+  }
+
+  .bg-gradient-artist-detail {
+    background: linear-gradient(
+      to bottom,
+      var(--gradient-artist-detail-from),
       var(--gradient-detail-via),
       var(--spotify-dark)
     );
