@@ -1,6 +1,7 @@
 export { SpotifyCtaButton } from './SpotifyCtaButton';
 export { DetailHero } from './DetailHero';
 export { ErrorMessage } from './ErrorMessage';
+export { FavoriteMediaListScreen } from './FavoriteMediaListScreen';
 export { FavoriteButton } from './FavoriteButton';
 export { Grid } from './Grid';
 export { MediaCard } from './MediaCard';

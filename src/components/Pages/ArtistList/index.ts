@@ -1,0 +1,1 @@
+export { ArtistListPage } from './ArtistList';

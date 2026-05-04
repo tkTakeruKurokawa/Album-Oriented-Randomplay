@@ -14,9 +14,13 @@ interface DashboardPageProps {
   onStartPlayback?: (albums: AlbumType[], mode: 'albums' | 'artists') => void;
 }
 
+const DASHBOARD_ITEM_LIMIT = 6;
+
 export const DashboardPage = ({ onStartPlayback }: DashboardPageProps) => {
   const favoriteAlbumsId = useId();
   const favoriteArtistsId = useId();
+  const favoriteAlbums = mockAlbums.slice(0, DASHBOARD_ITEM_LIMIT);
+  const favoriteArtists = mockArtists.slice(0, DASHBOARD_ITEM_LIMIT);
 
   const handlePlayAlbums = () => {
     // アルバムとEPのみを対象にする（シングルを除外）
@@ -72,8 +76,18 @@ export const DashboardPage = ({ onStartPlayback }: DashboardPageProps) => {
           />
         </div>
 
-        <AlbumGrid albums={mockAlbums} headingId={favoriteAlbumsId} />
-        <ArtistGrid artists={mockArtists} headingId={favoriteArtistsId} />
+        <AlbumGrid
+          albums={favoriteAlbums}
+          headingId={favoriteAlbumsId}
+          listHref="/album"
+          totalCount={mockAlbums.length}
+        />
+        <ArtistGrid
+          artists={favoriteArtists}
+          headingId={favoriteArtistsId}
+          listHref="/artist"
+          totalCount={mockArtists.length}
+        />
       </div>
     </main>
   );

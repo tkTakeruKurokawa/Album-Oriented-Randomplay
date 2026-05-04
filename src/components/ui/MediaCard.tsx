@@ -21,6 +21,11 @@ const titleClasses: Record<MediaCardVariant, string> = {
   artist: 'mb-1 block truncate text-center text-xs sm:text-sm',
 };
 
+const subtitleClasses: Record<MediaCardVariant, string> = {
+  album: 'block truncate text-xs',
+  artist: 'block truncate text-center text-xs',
+};
+
 export const MediaCard = ({
   href,
   imageUrl,
@@ -45,7 +50,7 @@ export const MediaCard = ({
         </span>
         <span className={titleClasses[variant]}>{title}</span>
         {subtitle ? (
-          <span className="block truncate text-xs">{subtitle}</span>
+          <span className={subtitleClasses[variant]}>{subtitle}</span>
         ) : null}
       </Link>
     </li>
