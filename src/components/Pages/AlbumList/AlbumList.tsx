@@ -1,7 +1,15 @@
+'use client';
+
+import { useEffect } from 'react';
+
 import { mockAlbums } from '@/components/Pages/Dashboard';
 import { FavoriteMediaListScreen } from '@/components/ui';
 
 export const AlbumListPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const albumItems = mockAlbums.map((album) => ({
     id: album.id,
     name: album.name,

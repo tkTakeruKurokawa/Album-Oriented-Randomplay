@@ -1,7 +1,15 @@
+'use client';
+
+import { useEffect } from 'react';
+
 import { mockArtists } from '@/components/Pages/Dashboard';
 import { FavoriteMediaListScreen } from '@/components/ui';
 
 export const ArtistListPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const artistItems = mockArtists.map((artist) => ({
     id: artist.id,
     name: artist.name,
