@@ -4,7 +4,7 @@ import { Logo } from '@/components/ui';
 
 export const HomePage = () => {
   return (
-    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#1e3a8a] via-[#7c2d12] to-[#4c1d95]">
+    <main className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#1e3a8a] via-[#7c2d12] to-[#4c1d95]">
       <div className="px-8 text-center">
         <div className="mb-8 flex items-center justify-center gap-3">
           <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#505050] p-3 shadow-2xl">
@@ -27,6 +27,6 @@ export const HomePage = () => {
           Spotifyでログイン
         </Link>
       </div>
-    </div>
+    </main>
   );
 };

@@ -54,7 +54,7 @@ export const AlbumDetailPage = ({ albumId }: AlbumDetailPageProps) => {
   }
 
   return (
-    <div className="bg-gradient-album-detail min-h-screen overflow-auto">
+    <main className="bg-gradient-album-detail min-h-screen overflow-auto">
       <div className="p-4 sm:p-6 lg:p-8">
         {/* アルバム情報ヘッダー */}
         <DetailHero imageUrl={album.coverUrl} imageAlt={album.name}>
@@ -76,11 +76,11 @@ export const AlbumDetailPage = ({ albumId }: AlbumDetailPageProps) => {
 
           <div className="flex items-center gap-2 text-sm text-[var(--spotify-light-gray)]">
             <span>{album.releaseYear}</span>
-            <span>•</span>
+            <span aria-hidden="true">•</span>
             <span>{album.tracks.length}曲</span>
-            <span>•</span>
+            <span aria-hidden="true">•</span>
             <span>{formatTime(album.totalDuration)}</span>
-            <span>•</span>
+            <span aria-hidden="true">•</span>
             <span>{album.label}</span>
           </div>
         </DetailHero>
@@ -94,18 +94,19 @@ export const AlbumDetailPage = ({ albumId }: AlbumDetailPageProps) => {
 
         {/* トラックリスト */}
         <div className="max-w-6xl">
-          <div className="space-y-1">
+          <ol className="list-none space-y-1">
             {album.tracks.map((track) => (
-              <TrackListItem
-                key={track.id}
-                trackNumber={track.trackNumber}
-                name={track.name}
-                duration={formatTime(track.duration)}
-              />
+              <li key={track.id}>
+                <TrackListItem
+                  trackNumber={track.trackNumber}
+                  name={track.name}
+                  duration={formatTime(track.duration)}
+                />
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </div>
-    </div>
+    </main>
   );
 };

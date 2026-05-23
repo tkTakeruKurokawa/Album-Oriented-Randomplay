@@ -12,17 +12,11 @@ export const TrackListItem = ({
   onClick,
 }: TrackListItemProps) => {
   return (
-    <div
-      role="button"
-      tabIndex={0}
-      className="group flex cursor-pointer items-center gap-4 rounded-md p-3 transition-colors hover:bg-[var(--spotify-gray)]"
+    <button
+      type="button"
+      className="group flex w-full cursor-pointer items-center gap-4 rounded-md p-3 text-left transition-colors hover:bg-[var(--spotify-gray)]"
       onClick={onClick}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          onClick?.();
-        }
-      }}
+      aria-label={`${name}を再生`}
     >
       <div className="w-8 text-center text-[var(--spotify-light-gray)] group-hover:text-white">
         <span className="text-sm">{trackNumber}</span>
@@ -35,6 +29,6 @@ export const TrackListItem = ({
       <span className="w-12 text-right text-sm text-[var(--spotify-light-gray)]">
         {duration}
       </span>
-    </div>
+    </button>
   );
 };

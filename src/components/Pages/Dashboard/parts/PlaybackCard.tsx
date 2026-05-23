@@ -39,8 +39,7 @@ export const PlaybackCard = ({
         </span>
         <span
           className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--spotify-green)] opacity-100 shadow-lg transition-transform group-hover:scale-105 group-active:scale-95 lg:opacity-0 lg:group-hover:opacity-100"
-          aria-label="シャッフル再生"
-          role="img"
+          aria-hidden="true"
         >
           <Shuffle size={24} className="text-black" />
         </span>
@@ -51,12 +50,9 @@ export const PlaybackCard = ({
         {description}
       </span>
 
-      <span
-        className="flex items-center gap-2 text-xs opacity-70 lg:text-sm"
-        aria-hidden="true"
-      >
-        <StatsIcon size={16} className="lg:hidden" />
-        <StatsIcon size={18} className="hidden lg:block" />
+      <span className="flex items-center gap-2 text-xs opacity-70 lg:text-sm">
+        <StatsIcon size={16} className="lg:hidden" aria-hidden="true" />
+        <StatsIcon size={18} className="hidden lg:block" aria-hidden="true" />
         <span>{statsLabel}</span>
       </span>
     </button>
