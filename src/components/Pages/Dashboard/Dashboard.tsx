@@ -3,10 +3,8 @@
 import { Album, Heart, User } from 'lucide-react';
 import { useId } from 'react';
 
-import { mockAlbums, mockArtists } from './MockData';
+import { mockAlbums, mockArtists, type Album as AlbumType } from './MockData';
 import { AlbumGrid, ArtistGrid, PlaybackCard } from './parts';
-
-import type { Album as AlbumType } from './MockData';
 
 import { PageHeader } from '@/components/ui';
 

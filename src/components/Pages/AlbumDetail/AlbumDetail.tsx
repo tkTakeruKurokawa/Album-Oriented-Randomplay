@@ -36,6 +36,9 @@ const getAlbumTypeLabel = (type: Album['type']): string => {
     case 'album': {
       return 'アルバム';
     }
+    default: {
+      return 'アルバム';
+    }
   }
 };
 

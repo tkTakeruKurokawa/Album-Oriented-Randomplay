@@ -2,8 +2,8 @@
 
 import { useEffect } from 'react';
 
+import { FavoriteMediaListScreen } from '@/components/model';
 import { mockArtists } from '@/components/Pages/Dashboard';
-import { FavoriteMediaListScreen } from '@/components/ui';
 
 export const ArtistListPage = () => {
   useEffect(() => {
