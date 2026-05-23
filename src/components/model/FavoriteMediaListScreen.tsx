@@ -24,7 +24,7 @@ export const FavoriteMediaListScreen = ({
   items,
 }: FavoriteMediaListScreenProps) => {
   return (
-    <main className="bg-gradient-main min-h-screen flex-1 overflow-auto">
+    <section>
       <div className="p-4 sm:p-6 lg:p-8">
         <div className="mb-6 lg:mb-8">
           <h1 className="mb-2 text-3xl lg:mb-3 lg:text-5xl">{title}</h1>
@@ -48,6 +48,6 @@ export const FavoriteMediaListScreen = ({
           </Grid>
         </div>
       </div>
-    </main>
+    </section>
   );
 };

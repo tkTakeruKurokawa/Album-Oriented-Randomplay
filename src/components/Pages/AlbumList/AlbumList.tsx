@@ -19,11 +19,13 @@ export const AlbumListPage = () => {
   }));
 
   return (
-    <FavoriteMediaListScreen
-      title="お気に入りアルバム"
-      countLabel={`${String(mockAlbums.length)}枚のアルバム`}
-      variant="album"
-      items={albumItems}
-    />
+    <main className="bg-gradient-main min-h-screen flex-1 overflow-auto">
+      <FavoriteMediaListScreen
+        title="お気に入りアルバム"
+        countLabel={`${String(mockAlbums.length)}枚のアルバム`}
+        variant="album"
+        items={albumItems}
+      />
+    </main>
   );
 };

@@ -12,7 +12,7 @@ export const ErrorMessage = ({
   linkLabel,
 }: ErrorMessageProps) => {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[var(--spotify-dark)]">
+    <section className="flex items-center justify-center">
       <div className="text-center">
         <h1 className="mb-4 text-2xl">{title}</h1>
         <Link
@@ -22,6 +22,6 @@ export const ErrorMessage = ({
           {linkLabel}
         </Link>
       </div>
-    </main>
+    </section>
   );
 };
