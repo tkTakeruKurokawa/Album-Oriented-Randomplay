@@ -142,7 +142,7 @@
     }
   }
 
-  .bg-gradient-dashboard {
+  .bg-gradient-main {
     background: linear-gradient(
       to bottom,
       var(--gradient-dashboard-from),
