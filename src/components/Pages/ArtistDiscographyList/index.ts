@@ -1,0 +1,1 @@
+export { ArtistDiscographyListPage } from './ArtistDiscographyList';
