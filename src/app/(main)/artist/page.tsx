@@ -1,7 +1,7 @@
-import { ArtistListPage } from '@/components/Pages/ArtistList';
+import { FavoriteArtistListPage } from '@/components/Pages/FavoriteArtistList';
 
 const Page = () => {
-  return <ArtistListPage />;
+  return <FavoriteArtistListPage />;
 };
 
 export default Page;

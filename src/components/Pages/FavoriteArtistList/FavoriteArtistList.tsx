@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { FavoriteMediaListScreen } from '@/components/model';
 import { mockArtists } from '@/components/Pages/Dashboard';
 
-export const ArtistListPage = () => {
+export const FavoriteArtistListPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
