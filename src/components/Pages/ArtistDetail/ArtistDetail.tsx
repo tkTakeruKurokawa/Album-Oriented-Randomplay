@@ -80,6 +80,7 @@ export const ArtistDetailPage = ({ artistId }: ArtistDetailPageProps) => {
             albums={singlesAndEPs}
             headingId={singlesHeadingId}
             getSubtitle={getSinglesEPSubtitle}
+            listHref={`/artist/${artist.id}/singles-eps`}
           />
         )}
 
@@ -91,6 +92,7 @@ export const ArtistDetailPage = ({ artistId }: ArtistDetailPageProps) => {
             albums={albums}
             headingId={albumsHeadingId}
             getSubtitle={getAlbumSubtitle}
+            listHref={`/artist/${artist.id}/albums`}
           />
         )}
 
