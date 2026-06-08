@@ -31,7 +31,7 @@ export const AlbumGrid = ({
         {shouldShowAllLink ? (
           <Link
             href={listHref}
-            className="text-sm text-[var(--spotify-light-gray)] transition-colors hover:text-white"
+            className="text-sm font-bold text-[var(--spotify-light-gray)] transition-colors hover:text-white"
           >
             すべて表示
           </Link>
