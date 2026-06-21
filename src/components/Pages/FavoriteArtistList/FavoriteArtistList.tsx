@@ -25,6 +25,7 @@ export const FavoriteArtistListPage = () => {
         countLabel={`${String(mockArtists.length)}人のアーティスト`}
         variant="artist"
         items={artistItems}
+        cardAction="shuffle"
       />
     </main>
   );

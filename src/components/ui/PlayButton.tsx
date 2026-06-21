@@ -9,12 +9,26 @@ type PlayButtonSize = ComponentProps<typeof IconButton>['size'];
 interface PlayButtonProps {
   size?: PlayButtonSize;
   onClick?: () => void;
+  ariaLabel?: string;
+  className?: string;
+  iconSize?: number;
 }
 
-export const PlayButton = ({ size = 'lg', onClick }: PlayButtonProps) => {
+export const PlayButton = ({
+  size = 'lg',
+  onClick,
+  ariaLabel = '再生',
+  className = '',
+  iconSize = 24,
+}: PlayButtonProps) => {
   return (
-    <IconButton size={size} onClick={onClick} aria-label="再生">
-      <Play size={24} className="ml-1 text-black" fill="black" />
+    <IconButton
+      size={size}
+      onClick={onClick}
+      aria-label={ariaLabel}
+      className={className}
+    >
+      <Play size={iconSize} className="ml-1 text-black" fill="black" />
     </IconButton>
   );
 };

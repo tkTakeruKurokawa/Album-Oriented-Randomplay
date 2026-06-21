@@ -51,6 +51,8 @@ export const AlbumSection = ({
             variant="album"
             title={album.name}
             subtitle={getSubtitle(album)}
+            action="play"
+            actionMobileVisibility="hidden"
           />
         ))}
       </Grid>

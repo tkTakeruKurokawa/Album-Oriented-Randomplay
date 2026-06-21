@@ -25,6 +25,7 @@ export const FavoriteAlbumListPage = () => {
         countLabel={`${String(mockAlbums.length)}枚のアルバム`}
         variant="album"
         items={albumItems}
+        cardAction="play"
       />
     </main>
   );

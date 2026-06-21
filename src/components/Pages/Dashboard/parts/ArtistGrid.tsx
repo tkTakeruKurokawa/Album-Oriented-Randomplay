@@ -45,6 +45,8 @@ export const ArtistGrid = ({
             imageUrl={artist.imageUrl}
             variant="artist"
             title={artist.name}
+            action="shuffle"
+            actionMobileVisibility="hidden"
           />
         ))}
       </Grid>

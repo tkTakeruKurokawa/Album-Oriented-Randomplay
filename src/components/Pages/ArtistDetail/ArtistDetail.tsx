@@ -9,7 +9,7 @@ import { AlbumSection } from './parts';
 import type { Album } from '@/components/Pages/Dashboard';
 
 import { mockArtists } from '@/components/Pages/Dashboard';
-import { DetailHero, FavoriteButton, PlayButton } from '@/components/ui';
+import { DetailHero, FavoriteButton, ShuffleButton } from '@/components/ui';
 
 interface ArtistDetailPageProps {
   artistId: string;
@@ -67,7 +67,10 @@ export const ArtistDetailPage = ({ artistId }: ArtistDetailPageProps) => {
 
         {/* アクションボタン */}
         <div className="mb-12 flex items-center gap-4">
-          <PlayButton />
+          <ShuffleButton
+            size="lg"
+            ariaLabel={`${artist.name}をシャッフル再生`}
+          />
 
           <FavoriteButton isFavorited />
         </div>

@@ -1,6 +1,8 @@
 import { Grid, MediaCard } from '@/components/ui';
 
 type FavoriteMediaVariant = 'album' | 'artist';
+type FavoriteMediaAction = 'play' | 'shuffle';
+type FavoriteMediaActionMobileVisibility = 'always' | 'hidden';
 
 interface FavoriteMediaItem {
   id: string;
@@ -15,6 +17,8 @@ interface FavoriteMediaListScreenProps {
   countLabel: string;
   variant: FavoriteMediaVariant;
   items: FavoriteMediaItem[];
+  cardAction?: FavoriteMediaAction;
+  cardActionMobileVisibility?: FavoriteMediaActionMobileVisibility;
 }
 
 export const FavoriteMediaListScreen = ({
@@ -22,6 +26,8 @@ export const FavoriteMediaListScreen = ({
   countLabel,
   variant,
   items,
+  cardAction,
+  cardActionMobileVisibility,
 }: FavoriteMediaListScreenProps) => {
   return (
     <section>
@@ -43,6 +49,8 @@ export const FavoriteMediaListScreen = ({
                 variant={variant}
                 title={item.name}
                 subtitle={item.subtitle}
+                action={cardAction}
+                actionMobileVisibility={cardActionMobileVisibility}
               />
             ))}
           </Grid>

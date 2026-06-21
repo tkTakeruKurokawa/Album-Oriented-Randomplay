@@ -46,6 +46,8 @@ export const AlbumGrid = ({
             variant="album"
             title={album.name}
             subtitle={album.artist}
+            action="play"
+            actionMobileVisibility="hidden"
           />
         ))}
       </Grid>

@@ -74,6 +74,8 @@ export const ArtistDiscographyListPage = ({
         countLabel={`${String(albums.length)}枚の${listTitle}`}
         variant="album"
         items={items}
+        cardAction="play"
+        cardActionMobileVisibility="hidden"
       />
     </main>
   );
