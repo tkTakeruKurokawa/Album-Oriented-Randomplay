@@ -31,7 +31,7 @@ export const FavoriteMediaListScreen = ({
 }: FavoriteMediaListScreenProps) => {
   return (
     <section>
-      <div className="p-4 sm:p-6 lg:p-8">
+      <div className="px-4 pb-4 sm:px-6 sm:pb-6 lg:px-8 lg:pb-8">
         <div className="mb-6 lg:mb-8">
           <h1 className="mb-2 text-3xl lg:mb-3 lg:text-5xl">{title}</h1>
           <p className="text-sm text-[var(--spotify-light-gray)] lg:text-base">

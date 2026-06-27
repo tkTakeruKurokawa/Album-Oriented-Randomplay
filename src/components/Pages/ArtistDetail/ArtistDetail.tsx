@@ -47,8 +47,8 @@ export const ArtistDetailPage = ({ artistId }: ArtistDetailPageProps) => {
   );
 
   return (
-    <main className="bg-gradient-album-detail min-h-screen overflow-auto">
-      <div className="p-4 sm:p-6 lg:p-8">
+    <main className="page-with-fixed-header bg-gradient-album-detail overflow-auto">
+      <div className="px-4 pb-4 sm:px-6 sm:pb-6 lg:px-8 lg:pb-8">
         {/* アーティスト情報ヘッダー */}
         <DetailHero
           imageUrl={artist.imageUrl}

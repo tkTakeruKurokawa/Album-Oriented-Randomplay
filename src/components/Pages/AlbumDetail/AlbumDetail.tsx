@@ -54,8 +54,8 @@ export const AlbumDetailPage = ({ albumId }: AlbumDetailPageProps) => {
   }
 
   return (
-    <main className="bg-gradient-album-detail min-h-screen overflow-auto">
-      <div className="p-4 sm:p-6 lg:p-8">
+    <main className="page-with-fixed-header bg-gradient-album-detail overflow-auto">
+      <div className="px-4 pb-4 sm:px-6 sm:pb-6 lg:px-8 lg:pb-8">
         {/* アルバム情報ヘッダー */}
         <DetailHero imageUrl={album.coverUrl} imageAlt={album.name}>
           <div className="mb-2 text-xs lg:text-sm">

@@ -19,7 +19,7 @@ export const FavoriteAlbumListPage = () => {
   }));
 
   return (
-    <main className="bg-gradient-main min-h-screen flex-1 overflow-auto">
+    <main className="page-with-fixed-header bg-gradient-main flex-1 overflow-auto">
       <FavoriteMediaListScreen
         title="お気に入りアルバム"
         countLabel={`${String(mockAlbums.length)}枚のアルバム`}

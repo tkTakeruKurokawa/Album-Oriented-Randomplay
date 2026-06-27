@@ -2,7 +2,7 @@ import { ErrorMessage } from '@/components/ui';
 
 export const AlbumNotFound = () => {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[var(--spotify-dark)]">
+    <main className="page-with-fixed-header flex items-center justify-center bg-[var(--spotify-dark)]">
       <ErrorMessage
         title="アルバムが見つかりません"
         linkHref="/dashboard"

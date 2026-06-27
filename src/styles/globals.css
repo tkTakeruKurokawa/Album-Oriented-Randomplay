@@ -17,6 +17,8 @@
   --gradient-album-detail-from: #3d2a5c;
   --gradient-artist-detail-from: #4a3d5c;
   --gradient-detail-via: #1a1a2e;
+  --app-header-height: 60px;
+  --app-header-content-gap: 25px;
 }
 
 @layer base {
@@ -166,5 +168,10 @@
       var(--gradient-detail-via),
       var(--spotify-dark)
     );
+  }
+
+  .page-with-fixed-header {
+    min-height: 100vh;
+    padding-top: calc(var(--app-header-height) + var(--app-header-content-gap));
   }
 }

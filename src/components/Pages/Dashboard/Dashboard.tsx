@@ -44,8 +44,8 @@ export const DashboardPage = ({ onStartPlayback }: DashboardPageProps) => {
   ).length;
 
   return (
-    <main className="bg-gradient-main flex-1 overflow-auto">
-      <div className="p-4 sm:p-6 lg:p-8">
+    <main className="page-with-fixed-header bg-gradient-main flex-1 overflow-auto">
+      <div className="px-4 pb-4 sm:px-6 sm:pb-6 lg:px-8 lg:pb-8">
         <PageHeader
           title="アルバムランダム再生"
           subtitle="アルバム単位で音楽をランダムに楽しもう"
