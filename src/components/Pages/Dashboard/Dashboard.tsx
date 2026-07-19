@@ -6,7 +6,8 @@ import { useId } from 'react';
 import { mockAlbums, mockArtists, type Album as AlbumType } from './MockData';
 import { AlbumGrid, ArtistGrid, PlaybackCard } from './parts';
 
-import { PageHeader } from '@/components/ui';
+import { PageHeader, PageMain } from '@/components/ui';
+import { PAGE_MAIN_GRADIENT_MAIN } from '@/components/ui/PageMainGradients';
 
 interface DashboardPageProps {
   onStartPlayback?: (albums: AlbumType[], mode: 'albums' | 'artists') => void;
@@ -44,7 +45,7 @@ export const DashboardPage = ({ onStartPlayback }: DashboardPageProps) => {
   ).length;
 
   return (
-    <main className="page-with-fixed-header bg-gradient-main flex-1 overflow-auto">
+    <PageMain className={`${PAGE_MAIN_GRADIENT_MAIN} flex-1`}>
       <div className="px-4 pb-4 sm:px-6 sm:pb-6 lg:px-8 lg:pb-8">
         <PageHeader
           title="アルバムランダム再生"
@@ -87,6 +88,6 @@ export const DashboardPage = ({ onStartPlayback }: DashboardPageProps) => {
           totalCount={mockArtists.length}
         />
       </div>
-    </main>
+    </PageMain>
   );
 };

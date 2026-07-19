@@ -9,7 +9,13 @@ import { AlbumSection } from './parts';
 import type { Album } from '@/components/Pages/Dashboard';
 
 import { mockArtists } from '@/components/Pages/Dashboard';
-import { DetailHero, FavoriteButton, ShuffleButton } from '@/components/ui';
+import {
+  DetailHero,
+  FavoriteButton,
+  PAGE_MAIN_GRADIENT_ALBUM_DETAIL,
+  PageMain,
+  ShuffleButton,
+} from '@/components/ui';
 
 interface ArtistDetailPageProps {
   artistId: string;
@@ -47,7 +53,7 @@ export const ArtistDetailPage = ({ artistId }: ArtistDetailPageProps) => {
   );
 
   return (
-    <main className="page-with-fixed-header bg-gradient-album-detail overflow-auto">
+    <PageMain className={PAGE_MAIN_GRADIENT_ALBUM_DETAIL}>
       <div className="px-4 pb-4 sm:px-6 sm:pb-6 lg:px-8 lg:pb-8">
         {/* アーティスト情報ヘッダー */}
         <DetailHero
@@ -106,6 +112,6 @@ export const ArtistDetailPage = ({ artistId }: ArtistDetailPageProps) => {
           </div>
         )}
       </div>
-    </main>
+    </PageMain>
   );
 };

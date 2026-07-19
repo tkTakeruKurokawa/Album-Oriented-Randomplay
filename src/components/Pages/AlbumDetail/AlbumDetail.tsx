@@ -11,6 +11,8 @@ import { mockAlbums } from '@/components/Pages/Dashboard';
 import {
   DetailHero,
   FavoriteButton,
+  PAGE_MAIN_GRADIENT_ALBUM_DETAIL,
+  PageMain,
   PlayButton,
   TrackListItem,
 } from '@/components/ui';
@@ -54,7 +56,7 @@ export const AlbumDetailPage = ({ albumId }: AlbumDetailPageProps) => {
   }
 
   return (
-    <main className="page-with-fixed-header bg-gradient-album-detail overflow-auto">
+    <PageMain className={PAGE_MAIN_GRADIENT_ALBUM_DETAIL}>
       <div className="px-4 pb-4 sm:px-6 sm:pb-6 lg:px-8 lg:pb-8">
         {/* アルバム情報ヘッダー */}
         <DetailHero imageUrl={album.coverUrl} imageAlt={album.name}>
@@ -107,6 +109,6 @@ export const AlbumDetailPage = ({ albumId }: AlbumDetailPageProps) => {
           </ol>
         </div>
       </div>
-    </main>
+    </PageMain>
   );
 };

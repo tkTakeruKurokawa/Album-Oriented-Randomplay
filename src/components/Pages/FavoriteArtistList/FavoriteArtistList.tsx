@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 
 import { FavoriteMediaListScreen } from '@/components/model';
 import { mockArtists } from '@/components/Pages/Dashboard';
+import { PAGE_MAIN_GRADIENT_MAIN, PageMain } from '@/components/ui';
 
 export const FavoriteArtistListPage = () => {
   useEffect(() => {
@@ -19,7 +20,7 @@ export const FavoriteArtistListPage = () => {
   }));
 
   return (
-    <main className="page-with-fixed-header bg-gradient-main flex-1 overflow-auto">
+    <PageMain className={`${PAGE_MAIN_GRADIENT_MAIN} flex-1`}>
       <FavoriteMediaListScreen
         title="お気に入りアーティスト"
         countLabel={`${String(mockArtists.length)}人のアーティスト`}
@@ -27,6 +28,6 @@ export const FavoriteArtistListPage = () => {
         items={artistItems}
         cardAction="shuffle"
       />
-    </main>
+    </PageMain>
   );
 };

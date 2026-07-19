@@ -7,6 +7,8 @@ import type { Album } from '@/components/Pages/Dashboard';
 import { FavoriteMediaListScreen } from '@/components/model';
 import { ArtistNotFound } from '@/components/Pages/ArtistDetail/ArtistNotFound';
 import { mockArtists } from '@/components/Pages/Dashboard';
+import { PageMain } from '@/components/ui';
+import { PAGE_MAIN_GRADIENT_MAIN } from '@/components/ui/PageMainGradients';
 
 type ArtistDiscographyListType = 'albums' | 'singles-eps';
 
@@ -68,7 +70,7 @@ export const ArtistDiscographyListPage = ({
   }));
 
   return (
-    <main className="page-with-fixed-header bg-gradient-main flex-1 overflow-auto">
+    <PageMain className={`${PAGE_MAIN_GRADIENT_MAIN} flex-1`}>
       <FavoriteMediaListScreen
         title={`${artist.name} の${listTitle}`}
         countLabel={`${String(albums.length)}枚の${listTitle}`}
@@ -77,6 +79,6 @@ export const ArtistDiscographyListPage = ({
         cardAction="play"
         cardActionMobileVisibility="hidden"
       />
-    </main>
+    </PageMain>
   );
 };
