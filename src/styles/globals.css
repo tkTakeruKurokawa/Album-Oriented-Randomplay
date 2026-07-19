@@ -172,7 +172,6 @@
 
   .page-with-fixed-header {
     min-height: 100vh;
-    overscroll-behavior-y: contain;
     padding-top: calc(var(--app-header-height) + var(--app-header-content-gap));
   }
 }
