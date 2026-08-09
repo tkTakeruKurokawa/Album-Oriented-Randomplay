@@ -1,6 +1,6 @@
 'use client';
 
-import { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, createRef, ErrorInfo, ReactNode } from 'react';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -20,6 +20,8 @@ export class ErrorBoundary extends Component<
   ErrorBoundaryProps,
   ErrorBoundaryState
 > {
+  private fallbackRef = createRef<HTMLDivElement>();
+
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = {
@@ -41,6 +43,15 @@ export class ErrorBoundary extends Component<
     console.error('Error caught by ErrorBoundary:', error, errorInfo);
   }
 
+  componentDidUpdate(
+    _prevProps: ErrorBoundaryProps,
+    prevState: ErrorBoundaryState
+  ): void {
+    if (!prevState.hasError && this.state.hasError) {
+      this.fallbackRef.current?.focus();
+    }
+  }
+
   resetErrorBoundary = (): void => {
     this.setState({
       hasError: false,
@@ -60,7 +71,13 @@ export class ErrorBoundary extends Component<
 
       // デフォルトのフォールバックUI
       return (
-        <div className="rounded-md border border-red-200 bg-red-50 p-4">
+        <div
+          ref={this.fallbackRef}
+          role="alert"
+          aria-live="assertive"
+          tabIndex={-1}
+          className="rounded-md border border-red-200 bg-red-50 p-4"
+        >
           <h2 className="text-lg font-semibold text-red-800">
             エラーが発生しました
           </h2>
@@ -69,6 +86,7 @@ export class ErrorBoundary extends Component<
               'アプリケーションで問題が発生しました。'}
           </p>
           <button
+            type="button"
             onClick={this.resetErrorBoundary}
             className="mt-3 rounded bg-red-100 px-4 py-2 text-red-800 transition-colors hover:bg-red-200"
           >

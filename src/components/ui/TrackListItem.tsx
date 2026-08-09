@@ -16,7 +16,6 @@ export const TrackListItem = ({
       type="button"
       className="group flex w-full cursor-pointer items-center gap-4 rounded-md p-3 text-left transition-colors hover:bg-[var(--spotify-gray)]"
       onClick={onClick}
-      aria-label={`${name}を再生`}
     >
       <div className="w-8 text-center text-[var(--spotify-light-gray)] group-hover:text-white">
         <span className="text-sm">{trackNumber}</span>

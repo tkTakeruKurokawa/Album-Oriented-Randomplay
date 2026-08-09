@@ -22,7 +22,7 @@ export const HomePage = () => {
 
         <Link
           href="/auth/signin"
-          className="inline-block rounded-full bg-[var(--spotify-green)] px-12 py-4 font-bold tracking-wide transition-all hover:scale-105 hover:bg-[var(--spotify-green-hover)]"
+          className="inline-block rounded-full bg-[var(--spotify-green)] px-12 py-4 font-bold tracking-wide text-[var(--spotify-black)] transition-all hover:scale-105 hover:bg-[var(--spotify-green-hover)]"
         >
           Spotifyでログイン
         </Link>
