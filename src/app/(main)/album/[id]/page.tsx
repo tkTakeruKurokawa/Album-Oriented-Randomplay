@@ -20,9 +20,16 @@ export const generateMetadata = async ({
     };
   }
 
+  const albumName = album.name.trim() || 'タイトル不明';
+  const artistNames =
+    album.artists
+      .map((artist) => artist.name.trim())
+      .filter(Boolean)
+      .join('、') || 'アーティスト名不明';
+
   return {
-    title: `${album.name} | アルバム指向ランダムプレイ`,
-    description: `${album.artist} の ${album.name} の収録曲を確認できます。`,
+    title: `${albumName} | アルバム指向ランダムプレイ`,
+    description: `${artistNames} の ${albumName} の収録曲を確認できます。`,
   };
 };
 

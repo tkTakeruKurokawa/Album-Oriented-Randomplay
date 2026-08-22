@@ -72,8 +72,10 @@ export const mockAlbumData = {
     },
   ],
   release_date: '2023-01-01',
+  release_date_precision: 'day' as const,
   total_tracks: 10,
   album_type: 'album' as const,
+  uri: 'spotify:album:test-album-id',
   external_urls: {
     spotify: 'https://open.spotify.com/album/test-album-id',
   },

@@ -12,6 +12,7 @@ interface PlayButtonProps {
   ariaLabel?: string;
   className?: string;
   iconSize?: number;
+  disabled?: boolean;
 }
 
 export const PlayButton = ({
@@ -20,6 +21,7 @@ export const PlayButton = ({
   ariaLabel = '再生',
   className = '',
   iconSize = 24,
+  disabled = false,
 }: PlayButtonProps) => {
   return (
     <IconButton
@@ -27,6 +29,7 @@ export const PlayButton = ({
       onClick={onClick}
       aria-label={ariaLabel}
       className={className}
+      disabled={disabled}
     >
       <Play size={iconSize} className="ml-1 text-black" fill="black" />
     </IconButton>

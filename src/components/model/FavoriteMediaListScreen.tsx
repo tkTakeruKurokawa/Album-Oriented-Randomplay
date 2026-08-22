@@ -7,9 +7,11 @@ type FavoriteMediaActionMobileVisibility = 'always' | 'hidden';
 interface FavoriteMediaItem {
   id: string;
   name: string;
-  imageUrl: string;
+  imageUrl?: string | null;
   href: string;
   subtitle?: string;
+  isPlayable?: boolean;
+  restrictionReason?: string;
 }
 
 interface FavoriteMediaListScreenProps {
@@ -51,6 +53,8 @@ export const FavoriteMediaListScreen = ({
                 subtitle={item.subtitle}
                 action={cardAction}
                 actionMobileVisibility={cardActionMobileVisibility}
+                isPlayable={item.isPlayable}
+                restrictionReason={item.restrictionReason}
               />
             ))}
           </Grid>

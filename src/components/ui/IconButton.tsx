@@ -28,7 +28,7 @@ export const IconButton = ({
   return (
     <button
       type="button"
-      className={`flex items-center justify-center transition-transform focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
+      className={`flex items-center justify-center transition-transform focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100 ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
       {...props}
     />
   );

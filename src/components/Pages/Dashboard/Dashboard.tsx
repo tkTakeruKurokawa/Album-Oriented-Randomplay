@@ -22,26 +22,23 @@ export const DashboardPage = ({ onStartPlayback }: DashboardPageProps) => {
   const favoriteArtists = mockArtists.slice(0, DASHBOARD_ITEM_LIMIT);
 
   const handlePlayAlbums = () => {
-    // アルバムとEPのみを対象にする（シングルを除外）
-    const albumsAndEPs = mockAlbums.filter(
-      (album) => album.type === 'album' || album.type === 'ep'
+    const albumReleases = mockAlbums.filter(
+      (album) => album.type !== 'single' && album.isPlayable !== false
     );
-    onStartPlayback?.(albumsAndEPs, 'albums');
+    onStartPlayback?.(albumReleases, 'albums');
   };
 
   const handlePlayArtists = () => {
-    // お気に入りアーティストのアルバムとEPのみを集める（シングルを除外）
     const allArtistAlbums = mockArtists.flatMap((artist) =>
       artist.albums.filter(
-        (album) => album.type === 'album' || album.type === 'ep'
+        (album) => album.type !== 'single' && album.isPlayable !== false
       )
     );
     onStartPlayback?.(allArtistAlbums, 'artists');
   };
 
-  // アルバム・EPの総数を計算
-  const albumsAndEPsCount = mockAlbums.filter(
-    (album) => album.type === 'album' || album.type === 'ep'
+  const albumReleaseCount = mockAlbums.filter(
+    (album) => album.type !== 'single'
   ).length;
 
   return (
@@ -60,7 +57,7 @@ export const DashboardPage = ({ onStartPlayback }: DashboardPageProps) => {
             title="お気に入りアルバム"
             description="保存したアルバムをランダムに再生します"
             statsIcon={Album}
-            statsLabel={`${String(albumsAndEPsCount)}枚のアルバム`}
+            statsLabel={`${String(albumReleaseCount)}枚のアルバム・コンピレーション`}
             onClick={handlePlayAlbums}
           />
           <PlaybackCard

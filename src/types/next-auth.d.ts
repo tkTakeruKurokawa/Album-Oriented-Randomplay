@@ -9,8 +9,6 @@ declare module 'next-auth' {
     user?: User & {
       spotifyId?: string;
       spotifyUrl?: string;
-      country?: string;
-      product?: 'premium' | 'free' | 'open';
     };
   }
 
@@ -31,8 +29,6 @@ declare module 'next-auth/jwt' {
     user?: {
       spotifyId?: string;
       spotifyUrl?: string;
-      country?: string;
-      product?: 'premium' | 'free' | 'open';
     };
   }
 }

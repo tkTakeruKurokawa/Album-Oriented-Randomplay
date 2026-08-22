@@ -2,7 +2,10 @@ import { AxiosError, AxiosResponse } from 'axios';
 
 import { spotifyApi } from './spotify';
 
-import { SpotifyAlbumsResponse } from '@/types/spotify/albums';
+import type {
+  SpotifyAlbum,
+  SpotifyAlbumsResponse,
+} from '@/types/spotify/albums';
 
 // Spotify API エラーレスポンス型
 interface SpotifyErrorResponse {
@@ -28,7 +31,6 @@ export const getUserSavedAlbums = async (
         params: {
           limit,
           offset,
-          market: 'from_token',
         },
       }
     );
@@ -54,13 +56,11 @@ export const getUserSavedAlbums = async (
  * @param albumId アルバムID
  * @returns アルバム詳細情報
  */
-export const getAlbumDetails = async (albumId: string): Promise<unknown> => {
+export const getAlbumDetails = async (
+  albumId: string
+): Promise<SpotifyAlbum> => {
   try {
-    const response = await spotifyApi.get(`/albums/${albumId}`, {
-      params: {
-        market: 'from_token',
-      },
-    });
+    const response = await spotifyApi.get<SpotifyAlbum>(`/albums/${albumId}`);
 
     return response.data;
   } catch (error) {

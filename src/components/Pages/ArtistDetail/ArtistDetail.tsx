@@ -11,7 +11,6 @@ import type { Album } from '@/components/Pages/Dashboard';
 import { mockArtists } from '@/components/Pages/Dashboard';
 import {
   DetailHero,
-  FavoriteButton,
   PAGE_MAIN_GRADIENT_ALBUM_DETAIL,
   PageMain,
   ShuffleButton,
@@ -22,12 +21,15 @@ interface ArtistDetailPageProps {
 }
 
 const getSinglesEPSubtitle = (album: Album): string => {
-  const typeLabel = album.type === 'single' ? 'シングル' : 'EP';
-  return `${String(album.releaseYear)} • ${typeLabel}`;
+  const releaseDateLabel = album.releaseDateLabel.trim() || '発売日不明';
+  return `${releaseDateLabel} • シングル・EP`;
 };
 
 const getAlbumSubtitle = (album: Album): string => {
-  return `${String(album.releaseYear)} • ${String(album.tracks.length)}曲`;
+  const releaseDateLabel = album.releaseDateLabel.trim() || '発売日不明';
+  const typeLabel =
+    album.type === 'compilation' ? 'コンピレーション' : 'アルバム';
+  return `${releaseDateLabel} • ${typeLabel} • ${String(album.tracks.length)}曲`;
 };
 
 export const ArtistDetailPage = ({ artistId }: ArtistDetailPageProps) => {
@@ -43,13 +45,13 @@ export const ArtistDetailPage = ({ artistId }: ArtistDetailPageProps) => {
     return <ArtistNotFound />;
   }
 
+  const artistName = artist.name.trim() || 'アーティスト名不明';
   const singlesAndEPs = artist.albums.filter(
-    (album) => album.type === 'single' || album.type === 'ep'
+    (album) => album.type === 'single'
   );
-  const albums = artist.albums.filter((album) => album.type === 'album');
-  // ランダム再生対象（アルバム + EP、シングルは除外）
+  const albums = artist.albums.filter((album) => album.type !== 'single');
   const playableAlbums = artist.albums.filter(
-    (album) => album.type === 'album' || album.type === 'ep'
+    (album) => album.type !== 'single' && album.isPlayable !== false
   );
 
   return (
@@ -58,16 +60,16 @@ export const ArtistDetailPage = ({ artistId }: ArtistDetailPageProps) => {
         {/* アーティスト情報ヘッダー */}
         <DetailHero
           imageUrl={artist.imageUrl}
-          imageAlt={artist.name}
+          imageAlt={artistName}
           variant="artist"
         >
           <div className="mb-2 text-xs lg:text-sm">アーティスト</div>
           <h1 className="mb-6 text-3xl sm:text-4xl lg:text-7xl">
-            {artist.name}
+            {artistName}
           </h1>
 
           <div className="text-sm text-[var(--spotify-light-gray)]">
-            <span>{playableAlbums.length}枚のアルバム・EP</span>
+            <span>{playableAlbums.length}枚のアルバム・コンピレーション</span>
           </div>
         </DetailHero>
 
@@ -75,10 +77,9 @@ export const ArtistDetailPage = ({ artistId }: ArtistDetailPageProps) => {
         <div className="mb-12 flex items-center gap-4">
           <ShuffleButton
             size="lg"
-            ariaLabel={`${artist.name}をシャッフル再生`}
+            ariaLabel={`${artistName}をシャッフル再生`}
+            disabled={playableAlbums.length === 0}
           />
-
-          <FavoriteButton isFavorited />
         </div>
 
         {/* シングル・EP一覧 */}
@@ -97,7 +98,7 @@ export const ArtistDetailPage = ({ artistId }: ArtistDetailPageProps) => {
         {albums.length > 0 && (
           <AlbumSection
             icon={AlbumIcon}
-            title="アルバム"
+            title="アルバム・コンピレーション"
             albums={albums}
             headingId={albumsHeadingId}
             getSubtitle={getAlbumSubtitle}

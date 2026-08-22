@@ -1,8 +1,12 @@
+import { CircleSlash2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { PlayButton } from './PlayButton';
 import { ShuffleButton } from './ShuffleButton';
+
+import { FALLBACK_MEDIA_IMAGE_URL } from '@/lib/placeholder';
+import { getPlaybackRestrictionMessage } from '@/lib/spotify/restrictions';
 
 type MediaCardVariant = 'album' | 'artist';
 type MediaCardAction = 'play' | 'shuffle';
@@ -10,13 +14,15 @@ type MediaCardActionMobileVisibility = 'always' | 'hidden';
 
 interface MediaCardProps {
   href: string;
-  imageUrl: string;
+  imageUrl?: string | null;
   variant?: MediaCardVariant;
   title: string;
   subtitle?: string;
   action?: MediaCardAction;
   actionMobileVisibility?: MediaCardActionMobileVisibility;
   onActionClick?: () => void;
+  isPlayable?: boolean;
+  restrictionReason?: string;
 }
 
 const imageClasses: Record<MediaCardVariant, string> = {
@@ -51,20 +57,43 @@ export const MediaCard = ({
   action,
   actionMobileVisibility = 'always',
   onActionClick,
+  isPlayable,
+  restrictionReason,
 }: MediaCardProps) => {
+  const trimmedTitle = title.trim();
+  const trimmedSubtitle = subtitle?.trim();
+  const trimmedImageUrl = imageUrl?.trim();
+  const displayTitle =
+    trimmedTitle.length > 0
+      ? trimmedTitle
+      : variant === 'artist'
+        ? 'アーティスト名不明'
+        : 'タイトル不明';
+  const displaySubtitle =
+    trimmedSubtitle && trimmedSubtitle.length > 0 ? trimmedSubtitle : undefined;
+  const displayImageUrl =
+    trimmedImageUrl && trimmedImageUrl.length > 0
+      ? trimmedImageUrl
+      : FALLBACK_MEDIA_IMAGE_URL;
+  const isUnavailable = isPlayable === false;
+  const unavailableMessage = isUnavailable
+    ? getPlaybackRestrictionMessage(restrictionReason)
+    : null;
   const actionButton =
     action === 'play' ? (
       <PlayButton
         size="sm"
         iconSize={18}
         onClick={onActionClick}
-        ariaLabel={`${title}を再生`}
+        ariaLabel={`${displayTitle}を再生`}
+        disabled={isUnavailable}
       />
     ) : action === 'shuffle' ? (
       <ShuffleButton
         size="sm"
         onClick={onActionClick}
-        ariaLabel={`${title}をシャッフル再生`}
+        ariaLabel={`${displayTitle}をシャッフル再生`}
+        disabled={isUnavailable}
       />
     ) : null;
 
@@ -72,19 +101,28 @@ export const MediaCard = ({
     <div className="group relative w-full rounded-lg bg-[var(--spotify-darker)] p-3 transition-all hover:bg-[var(--spotify-gray)] active:scale-95 sm:p-4">
       <Link
         href={href}
-        aria-label={`${title}${subtitle ? ` ${subtitle}` : ''}を開く`}
+        aria-label={`${displayTitle}${displaySubtitle ? ` ${displaySubtitle}` : ''}を開く`}
         className="absolute inset-0 z-0 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
       />
 
       <div className="pointer-events-none relative z-10">
         <span className="relative mb-3 block sm:mb-4">
           <Image
-            src={imageUrl}
+            src={displayImageUrl}
             alt=""
             width={300}
             height={300}
             className={imageClasses[variant]}
           />
+          {unavailableMessage ? (
+            <span
+              className="pointer-events-auto absolute top-2 left-2 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-black/80 text-white"
+              aria-label={unavailableMessage}
+              title={unavailableMessage}
+            >
+              <CircleSlash2 size={18} aria-hidden="true" />
+            </span>
+          ) : null}
           {actionButton ? (
             <span
               className={`pointer-events-auto absolute right-2 bottom-2 z-20 ${actionVisibilityClasses[actionMobileVisibility]}`}
@@ -93,9 +131,9 @@ export const MediaCard = ({
             </span>
           ) : null}
         </span>
-        <span className={titleClasses[variant]}>{title}</span>
-        {subtitle ? (
-          <span className={subtitleClasses[variant]}>{subtitle}</span>
+        <span className={titleClasses[variant]}>{displayTitle}</span>
+        {displaySubtitle ? (
+          <span className={subtitleClasses[variant]}>{displaySubtitle}</span>
         ) : null}
       </div>
     </div>

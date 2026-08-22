@@ -26,8 +26,10 @@ const mockAlbums: SpotifyAlbum[] = [
       },
     ],
     release_date: '2023-01-01',
+    release_date_precision: 'day',
     total_tracks: 12,
     album_type: 'album',
+    uri: 'spotify:album:album-1',
     external_urls: {
       spotify: 'https://open.spotify.com/album/album-1',
     },
@@ -44,8 +46,10 @@ const mockAlbums: SpotifyAlbum[] = [
       },
     ],
     release_date: '2024-06-15',
+    release_date_precision: 'day',
     total_tracks: 8,
     album_type: 'album',
+    uri: 'spotify:album:album-2',
     external_urls: {
       spotify: 'https://open.spotify.com/album/album-2',
     },
@@ -61,7 +65,7 @@ export const handlers = [
       token_type: 'Bearer',
       expires_in: 3600,
       refresh_token: 'mocked-refresh-token',
-      scope: 'user-library-read user-read-private user-read-email',
+      scope: 'user-library-read user-follow-read',
     });
   }),
 
@@ -70,12 +74,6 @@ export const handlers = [
     return HttpResponse.json({
       id: 'test-user-id',
       display_name: 'Test User',
-      email: 'test@example.com',
-      country: 'JP',
-      product: 'premium',
-      followers: {
-        total: 42,
-      },
       images: [
         {
           url: 'https://example.com/user-avatar.jpg',
@@ -101,6 +99,7 @@ export const handlers = [
     const prevOffset = Math.max(0, offset - limit);
 
     return HttpResponse.json({
+      href: request.url,
       items,
       total: mockAlbums.length,
       limit,
@@ -129,27 +128,6 @@ export const handlers = [
     }
 
     return HttpResponse.json(album);
-  }),
-
-  // プレイリスト作成のモック
-  http.post('https://api.spotify.com/v1/users/:userId/playlists', () => {
-    return HttpResponse.json({
-      id: 'mock-playlist-id',
-      name: 'Album Random Play',
-      description: 'Created by Album-Oriented-Randomplay',
-      public: false,
-      collaborative: false,
-      external_urls: {
-        spotify: 'https://open.spotify.com/playlist/mock-playlist-id',
-      },
-    });
-  }),
-
-  // プレイリストにトラック追加のモック
-  http.post('https://api.spotify.com/v1/playlists/:playlistId/tracks', () => {
-    return HttpResponse.json({
-      snapshot_id: 'mock-snapshot-id',
-    });
   }),
 
   // NextAuth.js API routesのモック

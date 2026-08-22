@@ -2,10 +2,12 @@ import Image from 'next/image';
 
 import type { ReactNode } from 'react';
 
+import { FALLBACK_MEDIA_IMAGE_URL } from '@/lib/placeholder';
+
 type DetailHeroVariant = 'album' | 'artist';
 
 interface DetailHeroProps {
-  imageUrl: string;
+  imageUrl?: string | null;
   imageAlt: string;
   variant?: DetailHeroVariant;
   children: ReactNode;
@@ -22,11 +24,17 @@ export const DetailHero = ({
   variant = 'album',
   children,
 }: DetailHeroProps) => {
+  const trimmedImageUrl = imageUrl?.trim();
+  const displayImageUrl =
+    trimmedImageUrl && trimmedImageUrl.length > 0
+      ? trimmedImageUrl
+      : FALLBACK_MEDIA_IMAGE_URL;
+
   return (
     <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:gap-8">
       <div className="mx-auto w-full max-w-[280px] shrink-0 lg:mx-0 lg:h-64 lg:w-64">
         <Image
-          src={imageUrl}
+          src={displayImageUrl}
           alt={imageAlt}
           width={300}
           height={300}

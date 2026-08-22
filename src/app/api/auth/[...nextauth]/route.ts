@@ -9,13 +9,7 @@ interface SpotifyTokenResponse {
 }
 
 // Spotifyの認可スコープを定義
-const scopes = [
-  'user-read-email',
-  'user-read-private',
-  'playlist-read-private',
-  'playlist-read-collaborative',
-  'user-library-read',
-].join(' ');
+const scopes = ['user-library-read', 'user-follow-read'].join(' ');
 
 // NextAuth設定
 const authOptions: AuthOptions = {

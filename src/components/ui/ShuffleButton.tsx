@@ -11,6 +11,7 @@ interface ShuffleButtonProps {
   onClick?: () => void;
   ariaLabel?: string;
   className?: string;
+  disabled?: boolean;
 }
 
 export const ShuffleButton = ({
@@ -18,6 +19,7 @@ export const ShuffleButton = ({
   onClick,
   ariaLabel = 'シャッフル再生',
   className = '',
+  disabled = false,
 }: ShuffleButtonProps) => {
   return (
     <IconButton
@@ -25,6 +27,7 @@ export const ShuffleButton = ({
       onClick={onClick}
       aria-label={ariaLabel}
       className={className}
+      disabled={disabled}
     >
       <Shuffle size={24} className="text-black" />
     </IconButton>

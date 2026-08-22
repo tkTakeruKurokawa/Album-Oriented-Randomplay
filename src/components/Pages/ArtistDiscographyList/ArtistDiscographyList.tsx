@@ -19,12 +19,12 @@ interface ArtistDiscographyListPageProps {
 
 const albumTypeLabels: Record<Album['type'], string> = {
   album: 'アルバム',
-  ep: 'EP',
-  single: 'シングル',
+  single: 'シングル・EP',
+  compilation: 'コンピレーション',
 };
 
 const listTitles: Record<ArtistDiscographyListType, string> = {
-  albums: 'アルバム',
+  albums: 'アルバム・コンピレーション',
   'singles-eps': 'シングル・EP',
 };
 
@@ -33,16 +33,15 @@ const getAlbumsByListType = (
   listType: ArtistDiscographyListType
 ) => {
   if (listType === 'albums') {
-    return albums.filter((album) => album.type === 'album');
+    return albums.filter((album) => album.type !== 'single');
   }
 
-  return albums.filter(
-    (album) => album.type === 'single' || album.type === 'ep'
-  );
+  return albums.filter((album) => album.type === 'single');
 };
 
 const getAlbumSubtitle = (album: Album): string => {
-  return `${String(album.releaseYear)} • ${albumTypeLabels[album.type]}`;
+  const releaseDateLabel = album.releaseDateLabel.trim() || '発売日不明';
+  return `${releaseDateLabel} • ${albumTypeLabels[album.type]}`;
 };
 
 export const ArtistDiscographyListPage = ({
@@ -59,6 +58,7 @@ export const ArtistDiscographyListPage = ({
     return <ArtistNotFound />;
   }
 
+  const artistName = artist.name.trim() || 'アーティスト名不明';
   const listTitle = listTitles[listType];
   const albums = getAlbumsByListType(artist.albums, listType);
   const items = albums.map((album) => ({
@@ -67,12 +67,14 @@ export const ArtistDiscographyListPage = ({
     imageUrl: album.coverUrl,
     href: `/album/${album.id}`,
     subtitle: getAlbumSubtitle(album),
+    isPlayable: album.isPlayable,
+    restrictionReason: album.restrictionReason,
   }));
 
   return (
     <PageMain className={`${PAGE_MAIN_GRADIENT_MAIN} flex-1`}>
       <FavoriteMediaListScreen
-        title={`${artist.name} の${listTitle}`}
+        title={`${artistName} の${listTitle}`}
         countLabel={`${String(albums.length)}枚の${listTitle}`}
         variant="album"
         items={items}

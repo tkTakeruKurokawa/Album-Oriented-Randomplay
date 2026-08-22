@@ -11,13 +11,23 @@ export const FavoriteAlbumListPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const albumItems = mockAlbums.map((album) => ({
-    id: album.id,
-    name: album.name,
-    imageUrl: album.coverUrl,
-    href: `/album/${album.id}`,
-    subtitle: album.artist,
-  }));
+  const albumItems = mockAlbums.map((album) => {
+    const artistNames =
+      album.artists
+        .map((artist) => artist.name.trim())
+        .filter(Boolean)
+        .join('、') || 'アーティスト名不明';
+
+    return {
+      id: album.id,
+      name: album.name,
+      imageUrl: album.coverUrl,
+      href: `/album/${album.id}`,
+      subtitle: artistNames,
+      isPlayable: album.isPlayable,
+      restrictionReason: album.restrictionReason,
+    };
+  });
 
   return (
     <PageMain className={`${PAGE_MAIN_GRADIENT_MAIN} flex-1`}>

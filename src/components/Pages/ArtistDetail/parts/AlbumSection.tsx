@@ -53,6 +53,8 @@ export const AlbumSection = ({
             subtitle={getSubtitle(album)}
             action="play"
             actionMobileVisibility="hidden"
+            isPlayable={album.isPlayable}
+            restrictionReason={album.restrictionReason}
           />
         ))}
       </Grid>

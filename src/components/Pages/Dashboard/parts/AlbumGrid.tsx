@@ -38,18 +38,28 @@ export const AlbumGrid = ({
         ) : null}
       </div>
       <Grid>
-        {albums.map((album) => (
-          <MediaCard
-            key={album.id}
-            href={`/album/${album.id}`}
-            imageUrl={album.coverUrl}
-            variant="album"
-            title={album.name}
-            subtitle={album.artist}
-            action="play"
-            actionMobileVisibility="hidden"
-          />
-        ))}
+        {albums.map((album) => {
+          const artistNames =
+            album.artists
+              .map((artist) => artist.name.trim())
+              .filter(Boolean)
+              .join('、') || 'アーティスト名不明';
+
+          return (
+            <MediaCard
+              key={album.id}
+              href={`/album/${album.id}`}
+              imageUrl={album.coverUrl}
+              variant="album"
+              title={album.name}
+              subtitle={artistNames}
+              action="play"
+              actionMobileVisibility="hidden"
+              isPlayable={album.isPlayable}
+              restrictionReason={album.restrictionReason}
+            />
+          );
+        })}
       </Grid>
     </section>
   );
