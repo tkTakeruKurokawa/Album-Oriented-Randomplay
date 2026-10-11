@@ -51,10 +51,7 @@ export interface SpotifyAlbum {
   restrictions?: SpotifyRestriction;
   artists: SpotifyArtist[];
   images: SpotifyImage[];
-  tracks?: {
-    items: SpotifyTrack[];
-    total: number;
-  };
+  tracks?: SpotifyPaging<SpotifyTrack>;
   total_tracks: number;
   external_urls: {
     spotify: string;
@@ -67,13 +64,17 @@ export interface SpotifySavedAlbum {
   album: SpotifyAlbum;
 }
 
-// 保存済みアルバム一覧のレスポンス
-export interface SpotifyAlbumsResponse {
+export interface SpotifyPaging<Item> {
   href: string;
-  items: SpotifySavedAlbum[];
+  items: Item[];
   next: string | null;
   previous: string | null;
   total: number;
   limit: number;
   offset: number;
 }
+
+// 保存済みアルバム一覧のレスポンス
+export type SpotifyAlbumsResponse = SpotifyPaging<SpotifySavedAlbum>;
+
+export type SpotifyTracksResponse = SpotifyPaging<SpotifyTrack>;
